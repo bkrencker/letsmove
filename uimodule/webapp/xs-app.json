@@ -4,7 +4,7 @@
     {
       "source": "^(.*)",
       "target": "$1",
-      "authenticationType": "xsuaa",
+      "authenticationType": "none",
       "service": "html5-apps-repo-rt"
     }
   ]
