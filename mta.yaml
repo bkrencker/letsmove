@@ -1,5 +1,5 @@
 _schema-version: 3.2.0
-ID: ui5
+ID: letsmove
 version: 0.0.1
 description: A simple CAP project.
 parameters:
@@ -39,7 +39,7 @@ modules:
     requires:
       - name: ui5_destination
       - name: ui5_html5_repo_runtime
-      - name: ui5_uaa
+    #  - name: ui5_uaa
   - name: webapp_deployer
     type: com.sap.application.content
     path: deployer

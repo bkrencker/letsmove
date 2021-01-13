@@ -27,7 +27,8 @@
     "mbt": "^1.0.17"
   },
   "scripts": {
-    "start": "ui5 serve --config=uimodule/ui5.yaml  --open index.html",
+    "start": "npx cds run",
+    "start_ui5": "ui5 serve --config=uimodule/ui5.yaml  --open index.html",
     "build:ui": "run-s  build:uimodule",
     "test": "run-s lint karma",
     "karma-ci": "karma start karma-ci.conf.js",
