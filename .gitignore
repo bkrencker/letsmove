@@ -1,0 +1,10 @@
+node_modules/
+.idea/
+.mta/
+*.mtar
+dist/
+mta_archives/
+deployer/resources/
+Makefile*
+mta-*
+approuter/*/webapp/
