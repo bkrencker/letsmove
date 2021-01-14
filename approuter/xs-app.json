@@ -1,8 +1,15 @@
 {
-  "welcomeFile": "comemmiletsmove/",
-  "authenticationMethod": "none",
+  "welcomeFile": "comemmiletsmove/index.html",
+  "authenticationMethod": "route",
   "logout": {
     "logoutEndpoint": "/do/logout"
   },
-  "routes": []
+  "routes": [
+    {
+      "source": ".*/srv_api/(.*)$",
+      "target": "$1",
+      "destination": "SRV_API_URL",
+      "authenticationType": "none"
+    }
+  ]
 }

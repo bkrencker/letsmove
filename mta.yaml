@@ -20,9 +20,10 @@ modules:
     requires:
       - name: letsmove-db
     provides:
-      - name: srv-api
+      - name: srv_api
         properties:
-          srv-url: ${default-url}
+          url: ${default-url}
+
   - name: letsmove-db-deployer
     type: hdb
     path: gen/db
@@ -30,6 +31,7 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: letsmove-db
+
   - name: ui5
     type: nodejs
     path: approuter
@@ -37,9 +39,17 @@ modules:
       disk-quota: 512M
       memory: 512M
     requires:
-      - name: ui5_destination
+    #  - name: ui5_destination
       - name: ui5_html5_repo_runtime
     #  - name: ui5_uaa
+      - name: srv_api
+        group: destinations
+        properties:
+           name: SRV_API_URL
+           forwardAuthToken: true
+           strictSSL: false
+           url: '~{url}'
+
   - name: webapp_deployer
     type: com.sap.application.content
     path: deployer
@@ -54,6 +64,7 @@ modules:
           artifacts:
             - dist/uimodule.zip
           target-path: resources/
+
   - name: uimodule
     type: html5
     path: ui
@@ -62,6 +73,15 @@ modules:
       commands:
         - npm run build:uimodule --prefix ..
       supported-platforms: []
+    requires:
+      - name: srv_api
+        group: destinations
+        properties:
+           name: SRV_API_URL
+           forwardAuthToken: true
+           strictSSL: false
+           url: '~{url}'
+
 resources:
   - name: letsmove-db
     type: com.sap.xs.hdi-container
@@ -70,11 +90,13 @@ resources:
       service-plan: hdi-shared
     properties:
       hdi-service-name: ${service-name}
-  - name: ui5_destination
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service-plan: lite
-      service: destination
+
+#  - name: ui5_destination
+#    type: org.cloudfoundry.managed-service
+#    parameters:
+#      service-plan: lite
+#      service: destination
+
   - name: ui5_html5_repo_host
     type: org.cloudfoundry.managed-service
     parameters:
@@ -82,11 +104,13 @@ resources:
       service: html5-apps-repo
       config:
         sizeLimit: 2
+
   - name: ui5_html5_repo_runtime
     type: org.cloudfoundry.managed-service
     parameters:
       service-plan: app-runtime
       service: html5-apps-repo
+
   - name: ui5_uaa
     type: org.cloudfoundry.managed-service
     parameters:
