@@ -40,7 +40,7 @@ modules:
       disk-quota: 512M
       memory: 256M
     requires:
-    #  - name: ui5_uaa
+      - name: ui5_uaa
       - name: srv_api
         group: destinations
         properties:
@@ -57,7 +57,6 @@ modules:
       memory: 256M
     requires:
       - name: ui5_html5_repo_runtime
-    #  - name: ui5_uaa
       - name: srv_api
         group: destinations
         properties:

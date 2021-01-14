@@ -8,11 +8,11 @@
 		"source": "^/admin/(.*)$",
 		"target": "/admin/$1",
 		"destination": "SRV_API_URL",
-		"authenticationType": "none"
+		"authenticationType": "xsuaa"
 	}, {
 		"source": "^(.*)$",
 		"target": "$1",
     "localDir": "./",
-		"authenticationType": "none"
+		"authenticationType": "xsuaa"
 	}]
 }
