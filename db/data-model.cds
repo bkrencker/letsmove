@@ -8,11 +8,17 @@ entity Books {
   stock  : Integer;
 }
 
+entity ActivityTypes : managed {
+  key code: String;
+  title: String @title: 'Activity';
+}
+
 entity Activities : cuid, managed {
-  type: String enum { walk; run; bike; swim; skate; surf; ski; other; };
-  distance: Decimal(6, 2);
-  uom: String enum { km; mi; };
-  nickname: String;
+  //type: String enum { walk; run; bike; swim; skate; surf; ski; other; };
+  type: Association to one ActivityTypes @title: 'Activity';
+  distance: Decimal(6, 2) @title: 'Distance';
+  uom: String @title: 'Unit of Measure' enum { km; mi; };
+  nickname: String @title: 'Nickname';
 }
 
 entity Countries : cuid, managed {
