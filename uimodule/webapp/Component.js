@@ -1,11 +1,11 @@
 sap.ui.define([
   "sap/ui/core/UIComponent",
   "sap/ui/Device",
-  "com/emmi/ui5/model/models"
+  "com/emmi/letsmove/model/models"
 ], function(UIComponent, Device, models) {
   "use strict";
 
-  return UIComponent.extend("com.emmi.ui5.Component", {
+  return UIComponent.extend("com.emmi.letsmove.Component", {
 
     metadata: {
       manifest: "json"

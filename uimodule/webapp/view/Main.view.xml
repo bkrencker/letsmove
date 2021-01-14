@@ -1,4 +1,4 @@
- <mvc:View controllerName="com.emmi.ui5.controller.Main"
+ <mvc:View controllerName="com.emmi.letsmove.controller.Main"
   displayBlock="true"
   xmlns="sap.m"
   xmlns:mvc="sap.ui.core.mvc">

@@ -1,7 +1,7 @@
 {
   "_version": "1.21.0",
   "sap.app": {
-    "id": "com.emmi.ui5",
+    "id": "com.emmi.letsmove",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -29,7 +29,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "rootView": {
-      "viewName": "com.emmi.ui5.view.Main",
+      "viewName": "com.emmi.letsmove.view.Main",
       "type": "XML",
       "async": true,
       "id": "idAppControl"
@@ -50,7 +50,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "com.emmi.ui5.i18n.i18n"
+          "bundleName": "com.emmi.letsmove.i18n.i18n"
         }
       }
     },

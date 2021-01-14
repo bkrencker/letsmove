@@ -1,7 +1,7 @@
 sap.ui.define([
-  "com/emmi/ui5/controller/BaseController"
+  "com/emmi/letsmove/controller/BaseController"
 ], function(Controller) {
   "use strict";
 
-  return Controller.extend("com.emmi.ui5.controller.Main", {});
+  return Controller.extend("com.emmi.letsmove.controller.Main", {});
 });

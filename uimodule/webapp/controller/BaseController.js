@@ -2,11 +2,11 @@ sap.ui.define([
   "sap/ui/core/mvc/Controller",
   "sap/ui/core/routing/History",
   "sap/ui/core/UIComponent",
-  "com/emmi/ui5/model/formatter"
+  "com/emmi/letsmove/model/formatter"
 ], function(Controller, History, UIComponent, formatter) {
   "use strict";
 
-  return Controller.extend("com.emmi.ui5.controller.BaseController", {
+  return Controller.extend("com.emmi.letsmove.controller.BaseController", {
 
     formatter: formatter,
 

@@ -1,5 +1,5 @@
 {
-  "welcomeFile": "comemmiui5/",
+  "welcomeFile": "comemmiletsmove/",
   "authenticationMethod": "none",
   "logout": {
     "logoutEndpoint": "/do/logout"
