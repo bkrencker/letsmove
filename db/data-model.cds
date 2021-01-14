@@ -29,14 +29,14 @@ entity Activities : cuid, managed {
 
 entity Countries : cuid, managed {
   isocode: String @assert.unique;
-  title: String;
+  title: String @title: 'Country';
 
   companies: Composition of many Companies on companies.country = $self;
 }
 
 entity Companies : cuid, managed {
   code: String @assert.unique;
-  title: String;
+  title: String @title: 'Company';
 
   country: Association to one Countries;
   activities: Association to many Activities on activities.company = $self;
