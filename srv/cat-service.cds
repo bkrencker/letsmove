@@ -5,17 +5,17 @@ service CatalogService {
 
     entity Activities as projection on letsmove.Activities;
 
-    view TotalActivity as select from Activities {
+    view TotalActivity as select from Activities   {
       round( sum(
         case
-          when uom = 'mi' then distance * 1.60934
+          when uom.code = 'mi' then distance * 1.60934
           else
             distance
         end
       ), 2) as totalKm: Decimal(10,2),
       round( sum(
         case
-          when uom = 'km' then distance * 0.62137
+          when uom.code = 'km' then distance * 0.62137
           else
             distance
         end
@@ -31,4 +31,5 @@ service CatalogService {
 
     @readonly entity Countries as projection on letsmove.Countries;
     @readonly entity Companies as projection on letsmove.Companies;
+    @readonly entity Units as projection on letsmove.Units;
 }

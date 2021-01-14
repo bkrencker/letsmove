@@ -1,4 +1,4 @@
-TYPE_CODE;DISTANCE;UOM;NICKNAME
+TYPE_CODE;DISTANCE;UOM_CODE;NICKNAME
 ski;10;mi;Ben
 run;15;km;Mättu
 skate;20;mi;Natascha
