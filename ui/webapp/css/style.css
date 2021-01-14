@@ -1,1 +1,12 @@
-/* Enter your custom styles here */
+.panel {
+ background-color: rgba(255, 255, 255, 0.8); /* 20% Transparent background */
+}
+
+.transparent-bg {
+ background-color: rgba(255, 255, 255, 0.0); /* 100% Transparent background */
+}
+
+.languButton {
+	height: 64px;
+	width: 64px;
+}
