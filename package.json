@@ -1,5 +1,5 @@
 {
-  "name": "ui5",
+  "name": "letsmove",
   "version": "0.0.1",
   "description": "A simple CAP project.",
   "repository": "<Add your repository here>",
@@ -31,10 +31,6 @@
     "start": "npx cds run",
     "start_ui5": "ui5 serve --config=uimodule/ui5.yaml  --open index.html",
     "build:ui": "run-s  build:uimodule",
-    "test": "run-s lint karma",
-    "karma-ci": "karma start karma-ci.conf.js",
-    "clearCoverage": "shx rm -rf coverage",
-    "karma": "run-s clearCoverage karma-ci",
     "lint": "eslint .",
     "build:mta": "mbt build",
     "deploy:cf": "cross-var cf deploy mta_archives/ui5_$npm_package_version.mtar",
