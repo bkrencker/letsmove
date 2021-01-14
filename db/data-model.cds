@@ -23,6 +23,8 @@ entity Activities : cuid, managed {
   distance: Decimal(6, 2) @title: 'Distance';
   uom: Association to one Units @title: 'Unit of Measure';
   nickname: String @title: 'Nickname';
+
+  company: Association to one Companies;
 }
 
 entity Countries : cuid, managed {
@@ -37,4 +39,5 @@ entity Companies : cuid, managed {
   title: String;
 
   country: Association to one Countries;
+  activities: Association to many Activities on activities.company = $self;
 }

@@ -42,6 +42,14 @@ annotate service.Activities with @(
       Value : type.title,
     },
     {
+        $Type : 'UI.DataField',
+        Value : company.title,
+    },
+    {
+        $Type : 'UI.DataField',
+        Value : company.country.title,
+    },
+    {
       $Type : 'UI.DataField',
       Value : distance,
     },
