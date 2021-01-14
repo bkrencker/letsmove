@@ -24,7 +24,7 @@ entity Activities : cuid, managed {
   uom: Association to one Units @title: 'Unit of Measure';
   nickname: String @title: 'Nickname';
 
-  company: Association to one Companies;
+  company: Association to one Companies @title: 'Company';
 }
 
 entity Countries : cuid, managed {

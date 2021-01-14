@@ -66,6 +66,7 @@ annotate service.Activities with @(
       {
           $Type : 'UI.ReferenceFacet',
           Target : '@UI.FieldGroup#Main',
+          Label : 'Data',
       },
   ],
   UI.FieldGroup #Main: {
@@ -90,11 +91,6 @@ annotate service.Activities with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : company.title,
-            //![@Common.FieldControl] : #ReadOnly,
-        },
-        {
-            $Type : 'UI.DataField',
             Value : company.country.title,
             //![@Common.FieldControl] : #ReadOnly,
         },
@@ -103,18 +99,21 @@ annotate service.Activities with @(
 );
 
 annotate service.Activities with {
+  distance @Common.FieldControl: #Mandatory;
+
   // show as dropdown instead of F4 PopUp
   type @Common: {
     ValueListWithFixedValues: true,
     FieldControl: #Mandatory,
-    Text  : type.code,
+    Text  : type.title,
     TextArrangement: #TextOnly
   };
 
+  // show as dropdown instead of F4 PopUp
   uom @Common: {
     ValueListWithFixedValues: true,
     FieldControl: #Mandatory,
-    Text  : uom.code,
+    Text  : uom.title,
     TextArrangement: #TextOnly
   };
 
@@ -132,17 +131,17 @@ annotate service.Activities with {
           },
           {
               $Type : 'Common.ValueListParameterDisplayOnly',
-              ValueListProperty : 'title',
+              ValueListProperty : 'country_ID',
           },
       ],
     },
-    Text  : company.code,
+    Text  : company.title,
     TextArrangement: #TextOnly
   };
 
   // Alle Audit Felder als Filter zulassen
   createdAt @UI.HiddenFilter:false;
-	createdBy @UI.HiddenFilter:false;
+  createdBy @UI.HiddenFilter:false;
   modifiedAt @UI.HiddenFilter:false;
   modifiedBy @UI.HiddenFilter:false;
 };
@@ -161,18 +160,41 @@ annotate service.Activities with @(
 );
 
 
-// Enable F4 Value Help and Semantic Key
-annotate service.Units with @( cds.odata.valuelist: true, Common.SemanticKey : [ code ] );
+// Enable F4 Value Help, Semantic Key and show title instead of ID
+annotate service.Units with @( cds.odata.valuelist: true, Common.SemanticKey : [ title ] );
+annotate service.Units with {
+    code @Common : {
+        Text: title,
+        TextArrangement : #TextOnly
+     }
+};
 
-// Enable F4 Value Help and Semantic Key
-annotate service.ActivityTypes with @( cds.odata.valuelist: true, Common.SemanticKey : [ code ] );
+annotate service.ActivityTypes with @( cds.odata.valuelist: true, Common.SemanticKey : [ title ] );
+annotate service.ActivityTypes with {
+    code @Common : {
+        Text: title,
+        TextArrangement : #TextOnly
+     }
+};
 
-// Enable F4 Value Help and Semantic Key
-annotate service.Companies with @( cds.odata.valuelist: true, Common.SemanticKey : [ code ] );
-
-// Enable F4 Value Help and Semantic Key
-annotate service.Countries with @( cds.odata.valuelist: true, Common.SemanticKey : [ isocode ] );
-
+annotate service.Companies with @( cds.odata.valuelist: true, Common.SemanticKey : [ title ] );
 annotate service.Companies with {
-  country @Common.ValueListWithFixedValues: true
+    ID @Common : {
+        Text: title,
+        TextArrangement : #TextOnly
+     };
+
+    country @Common: {
+      ValueListWithFixedValues: true,
+      Text: country.title,
+      TextArrangement : #TextOnly
+    };
+};
+
+annotate service.Countries with @( cds.odata.valuelist: true, Common.SemanticKey : [ title ] );
+annotate service.Countries with {
+    ID @Common : {
+        Text: title,
+        TextArrangement : #TextOnly
+     }
 };
