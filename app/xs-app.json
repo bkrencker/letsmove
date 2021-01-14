@@ -1,0 +1,18 @@
+{
+  "welcomeFile": "index.html",
+  "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [{
+		"source": "^/admin/(.*)$",
+		"target": "/admin/$1",
+		"destination": "SRV_API_URL",
+		"authenticationType": "none"
+	}, {
+		"source": "^(.*)$",
+		"target": "$1",
+    "localDir": "./",
+		"authenticationType": "none"
+	}]
+}

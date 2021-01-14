@@ -42,8 +42,18 @@
   "cds": {
     "requires": {
       "db": {
-        "kind": "sql"
+        "kind": "sql",
+        "model": [
+          "db",
+          "srv"
+        ],
+        "[production]": {
+          "kind": "hana"
+        }
       }
+    },
+    "odata": {
+      "version": "v4"
     }
   },
   "ui5": {

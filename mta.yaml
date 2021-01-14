@@ -10,6 +10,7 @@ build-parameters:
       commands:
         - npm install --production
         - npx -p @sap/cds-dk cds build --production
+
 modules:
   - name: letsmove-srv
     type: nodejs
@@ -32,14 +33,29 @@ modules:
     requires:
       - name: letsmove-db
 
+  - name: admin
+    type: nodejs
+    path: app
+    parameters:
+      disk-quota: 512M
+      memory: 256M
+    requires:
+    #  - name: ui5_uaa
+      - name: srv_api
+        group: destinations
+        properties:
+           name: SRV_API_URL
+           forwardAuthToken: true
+           strictSSL: false
+           url: '~{url}'
+
   - name: ui5
     type: nodejs
     path: approuter
     parameters:
       disk-quota: 512M
-      memory: 512M
+      memory: 256M
     requires:
-    #  - name: ui5_destination
       - name: ui5_html5_repo_runtime
     #  - name: ui5_uaa
       - name: srv_api
@@ -90,12 +106,6 @@ resources:
       service-plan: hdi-shared
     properties:
       hdi-service-name: ${service-name}
-
-#  - name: ui5_destination
-#    type: org.cloudfoundry.managed-service
-#    parameters:
-#      service-plan: lite
-#      service: destination
 
   - name: ui5_html5_repo_host
     type: org.cloudfoundry.managed-service
