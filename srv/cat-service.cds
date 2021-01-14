@@ -32,4 +32,5 @@ service CatalogService {
     @readonly entity Countries as projection on letsmove.Countries;
     @readonly entity Companies as projection on letsmove.Companies;
     @readonly entity Units as projection on letsmove.Units;
+    @readonly entity ActivityTypes as projection on letsmove.ActivityTypes;
 }

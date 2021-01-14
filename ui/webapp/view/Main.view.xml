@@ -1,6 +1,7 @@
  <mvc:View controllerName="com.emmi.letsmove.controller.Main"
   displayBlock="true"
   xmlns="sap.m"
+  xmlns:core="sap.ui.core"
   xmlns:mvc="sap.ui.core.mvc">
   <App id="idAppControl" >
     <Page id="page" showHeader="false" class="transparent-bg">
@@ -9,104 +10,64 @@
 				<FlexBox id="flexBoxLogo" alignItems="Center" justifyContent="Center">
 					<Image id="imgLogo" src="resources/img/emmi_logo.png" width="250px" class="sapUiMediumMarginTopBottom" press="reload"/>
 				</FlexBox>
-				<FlexBox id="flexBoxStatus" alignItems="Center" justifyContent="Center">
-					<VBox id="vBoxStatus">
-						<items>
-							<HBox id="hBoxStats">
-								<items>
-									<VBox id="vBoxStatus2" class="sapUiSmallMarginEnd">
-										<items>
-											<MessageStrip id="messageStrip" class="sapUiSmallMarginTopBottom" visible="false"/>
-										</items>
-									</VBox>
-								</items>
-							</HBox>
-						</items>
-					</VBox>
-				</FlexBox>
 				<VBox id="vBoxForm">
 					<items>
-						<HBox id="hBoxName">
+						<HBox id="hBoxDistnace">
 							<items>
-								<VBox id="vBoxFirstName" class="sapUiSmallMarginEnd">
+								<VBox id="vBoxDistance" width="100%" class="sapUiSmallMarginEnd">
 									<items>
-										<Label text="Vorname" id="labelFirstName" labelFor="inputFirstName" width="100%" />
-										<Input id="inputFirstName" required="true" type="Text" liveChange="validate" valueStateText="Geben Sie ihren Vornamen ein"
-										value="{ path: 'validation>/firstname', type: 'sap.ui.model.type.String', constraints: { maxLength: 50 }}"
-										valueLiveUpdate="true"/>
+										<Label text="Distanz" id="labelDistance" labelFor="inputDistance" width="100%" />
+										<Input id="inputDistance" required="true" type="Text"/>
 									</items>
 								</VBox>
-								<VBox id="vBoxLastName">
+								<VBox id="vBoxUnitSelection" width="100%">
 									<items>
-										<Label text="Nachname" id="labelLastName" labelFor="inputLastName" width="100%"/>
-										<Input id="inputLastName" type="Text" required="true" liveChange="validate" valueStateText="Geben Sie ihren Nachnamen ein"
-										value="{ path: 'validation>/lastname', type: 'sap.ui.model.type.String', constraints: { maxLength: 50 }}"
-										valueLiveUpdate="true" />
+										<Label text="Einheit" id="labelUnit" labelFor="inputUnit" width="100%"/>
+										<SegmentedButton id="segmentBtnUnit" width="100%" items="{/Units}">
+                        <items>
+                            <SegmentedButtonItem text="{title}" key="{code}" width="50%"/>
+                        </items>
+                    </SegmentedButton>
 									</items>
 								</VBox>
 							</items>
 						</HBox>
-						<HBox id="hBoxBirthYear">
+						<HBox id="hBoxActivity">
 							<items>
-								<VBox width="50%" id="vBoxBirthYear" class="sapUiSmallMarginEnd">
+								<VBox width="100%" id="vBoxActivity" class="sapUiSmallMarginEnd">
 									<items>
-										<Label id="labelBirthYear" text="Jahrgang" width="100%" labelFor="inputStreet"/>
-										<Input id="inputBirthYear" type="Number" liveChange="validate" required="true" valueStateText="Bitte Jahrgang eingeben"
-										value="{ path: 'validation>/birthyear', type: 'sap.ui.model.type.Integer', constraints: { minimum: 1900, maximum: 2020 } }"
-										valueLiveUpdate="false"/>
-									</items>
-								</VBox>
-								<VBox width="50%" id="vBoxStreet">
-									<items>
-										<Label id="labelStreet" text="Strasse" width="100%" labelFor="inputStreet"/>
-										<Input id="inputStreet" type="Text" liveChange="validate" required="true" valueStateText="Bitte Strasse eingeben"
-										value="{ path: 'validation>/street', type: 'sap.ui.model.type.String', constraints: { maxLength: 50 }}"
-										valueLiveUpdate="true"/>
+                    <Label text="Distanz" id="labelActivity" labelFor="segmentBtnActivity" width="100%" />
+										<SegmentedButton width="100%" id="segmentBtnActivity" items="{/ActivityTypes}">
+                        <items>
+                            <SegmentedButtonItem text="{title}" code="{code}"/>
+                        </items>
+                    </SegmentedButton>
 									</items>
 								</VBox>
 							</items>
 						</HBox>
-						<HBox width="100%" id="hBoxAdress">
+						<HBox width="100%" id="hBoxNickname">
 							<items>
 								<VBox width="100%" id="vBoxPLZ" class="sapUiSmallMarginEnd">
 									<items>
-										<Label id="labelPLZ" text="PLZ" labelFor="inputPLZ" width="100%"/>
-										<!-- Limit PLZ Range from 1000 - 9658 -->
-										<Input id="inputPLZ" type="Number" liveChange="validate" required="true" valueStateText="Die Postleitzahl ist ungültig"
-										value="{
-											type : 'sap.ui.model.type.String',
-											path: 'validation>/plz',
-											constraints : {
-							                    search: '^([1-8][0-9]{3}|9[0-5][0-9]{2}|96[0-4][0-9]|965[0-8]){0,4}$'
-							            	}
-						            	}"
-										valueLiveUpdate="true"/>
+										<Label id="labelNickname" text="Nickname" labelFor="inputNickname" width="100%"/>
+										<Input id="inputNickname" type="Text" required="true" />
 									</items>
 								</VBox>
 								<VBox id="vBoxCity" width="100%">
 									<items>
-										<Label id="labelCity" text="Ort" labelFor="inputCity" width="100%"/>
-										<Input id="inputCity" type="Text" liveChange="validate" required="true" valueStateText="Bitte Ort eingeben"
-										value="{ path: 'validation>/city', type: 'sap.ui.model.type.String', constraints: { maxLength: 50 }}"
-										valueLiveUpdate="true"/>
-									</items>
-								</VBox>
-							</items>
-						</HBox>
-						<HBox id="hBoxEmail" width="100%">
-							<items>
-								<VBox id="vBoxEmail" width="100%">
-									<items>
-										<Label id="labelEmail" text="E-Mail Adresse" width="100px"/>
-										<Input id="inputEmail" type="Email" liveChange="validate" required="true" valueStateText="E-Mail Adresse ungültig"
-										value="{
-											type : 'sap.ui.model.type.String',
-											path: 'validation>/email',
-											constraints : {
-							                    search: '([a-zA-Z0-9_\\-\\.]+)@[a-zA-Z]+\\.[a-z]{2,6}|^\\s*$'
-							            	}
-						            	}"
-						            	valueLiveUpdate="true" />
+                    <Label id="labelCity" text="Ort" labelFor="comboCompany" width="100%"/>
+										<ComboBox id="comboCompany"
+                      items="{
+                        path: '/CompaniesView',
+                        sorter: {
+                          path: 'CountryTitle',
+                          descending: false,
+                          group: true
+                        }
+                      }">
+                      <core:Item key="{CountryTitle}" text="{CompanyTitle}" id="Test" />
+                    </ComboBox>
 									</items>
 								</VBox>
 							</items>

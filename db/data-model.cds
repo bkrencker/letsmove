@@ -19,7 +19,6 @@ entity Units : managed {
 }
 
 entity Activities : cuid, managed {
-  //type: String enum { walk; run; bike; swim; skate; surf; ski; other; };
   type: Association to one ActivityTypes @title: 'Activity';
   distance: Decimal(6, 2) @title: 'Distance';
   uom: Association to one Units @title: 'Unit of Measure';
