@@ -3,19 +3,23 @@ using letsmove as letsmove from '../db/data-model';
 service CatalogService {
     @readonly entity Books as projection on letsmove.Books;
 
-    @insertonly entity Activities as projection on letsmove.Activities;
+    entity Activities as projection on letsmove.Activities;
 
     view TotalActivity as select from Activities {
-      sum(
+      round( sum(
         case
-          when uom = 'mi' then distance * 1.61
+          when uom = 'mi' then distance * 1.60934
+          else
+            distance
         end
-      ) as totalKm: Decimal(10,2),
-      sum(
+      ), 2) as totalKm: Decimal(10,2),
+      round( sum(
         case
-          when uom = 'km' then distance * 0.62
+          when uom = 'km' then distance * 0.62137
+          else
+            distance
         end
-      ) as totalMi: Decimal(10,2)
+      ), 2) as totalMi: Decimal(10,2)
     };
 
     view CompaniesView as select from Companies {
