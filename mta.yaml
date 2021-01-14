@@ -56,7 +56,7 @@ modules:
           target-path: resources/
   - name: uimodule
     type: html5
-    path: uimodule
+    path: ui
     build-parameters:
       builder: custom
       commands:

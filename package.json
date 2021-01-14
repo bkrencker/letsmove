@@ -29,14 +29,14 @@
   },
   "scripts": {
     "start": "npx cds run",
-    "start_ui5": "ui5 serve --config=uimodule/ui5.yaml  --open index.html",
+    "start_ui5": "ui5 serve --config=ui/ui5.yaml  --open index.html",
     "build:ui": "run-s  build:uimodule",
     "lint": "eslint .",
     "build:mta": "mbt build",
     "deploy:cf": "cross-var cf deploy mta_archives/ui5_$npm_package_version.mtar",
     "deploy": "run-s build:mta deploy:cf",
-    "serve:uimodule": "ui5 serve --config=uimodule/ui5.yaml",
-    "build:uimodule": "ui5 build --config=uimodule/ui5.yaml --clean-dest --dest uimodule/dist --include-task=generateManifestBundle"
+    "serve:uimodule": "ui5 serve --config=ui/ui5.yaml",
+    "build:uimodule": "ui5 build --config=ui/ui5.yaml --clean-dest --dest ui/dist --include-task=generateManifestBundle"
   },
   "cds": {
     "requires": {
