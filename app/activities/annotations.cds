@@ -84,14 +84,61 @@ annotate service.Activities with @(
             $Type : 'UI.DataField',
             Value : type_code,
         },
+        {
+            $Type : 'UI.DataField',
+            Value : company_ID,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : company.title,
+            //![@Common.FieldControl] : #ReadOnly,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : company.country.title,
+            //![@Common.FieldControl] : #ReadOnly,
+        },
     ],
   }
 );
 
 annotate service.Activities with {
   // show as dropdown instead of F4 PopUp
-  type @Common.ValueListWithFixedValues;
-  uom @Common.ValueListWithFixedValues;
+  type @Common: {
+    ValueListWithFixedValues: true,
+    FieldControl: #Mandatory,
+    Text  : type.code,
+    TextArrangement: #TextOnly
+  };
+
+  uom @Common: {
+    ValueListWithFixedValues: true,
+    FieldControl: #Mandatory,
+    Text  : uom.code,
+    TextArrangement: #TextOnly
+  };
+
+  // show as F4 ValueHelp Popup
+  company @Common : {
+    FieldControl: #Mandatory,
+    ValueList: {
+      $Type : 'Common.ValueListType',
+      CollectionPath : 'Companies',
+      Parameters : [
+          {
+              $Type : 'Common.ValueListParameterInOut',
+              LocalDataProperty : company_ID,
+              ValueListProperty : 'ID',
+          },
+          {
+              $Type : 'Common.ValueListParameterDisplayOnly',
+              ValueListProperty : 'title',
+          },
+      ],
+    },
+    Text  : company.code,
+    TextArrangement: #TextOnly
+  };
 
   // Alle Audit Felder als Filter zulassen
   createdAt @UI.HiddenFilter:false;
@@ -100,9 +147,32 @@ annotate service.Activities with {
   modifiedBy @UI.HiddenFilter:false;
 };
 
-// Enable F4 Value Help and Semantic Key
-annotate service.Units with @( cds.odata.valuelist: true, Common.SemanticKey : [ title ] );
+// Load new Company / Country after chaning in ValueHelp
+annotate service.Activities with @(
+  Common.SideEffects: {
+    $Type : 'Common.SideEffectsType',
+    SourceProperties : [
+        company_ID
+    ],
+    TargetEntities: [
+      company, company.country
+    ]
+  }
+);
+
 
 // Enable F4 Value Help and Semantic Key
-annotate service.ActivityTypes with @( cds.odata.valuelist: true, Common.SemanticKey : [ title ] );
+annotate service.Units with @( cds.odata.valuelist: true, Common.SemanticKey : [ code ] );
 
+// Enable F4 Value Help and Semantic Key
+annotate service.ActivityTypes with @( cds.odata.valuelist: true, Common.SemanticKey : [ code ] );
+
+// Enable F4 Value Help and Semantic Key
+annotate service.Companies with @( cds.odata.valuelist: true, Common.SemanticKey : [ code ] );
+
+// Enable F4 Value Help and Semantic Key
+annotate service.Countries with @( cds.odata.valuelist: true, Common.SemanticKey : [ isocode ] );
+
+annotate service.Companies with {
+  country @Common.ValueListWithFixedValues: true
+};

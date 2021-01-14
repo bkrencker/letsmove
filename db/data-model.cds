@@ -9,12 +9,12 @@ entity Books {
 }
 
 entity ActivityTypes : managed {
-  key code: String;
+  key code: String @assert.unique;
   title: String @title: 'Activity';
 }
 
 entity Units : managed {
-  key code: String;
+  key code: String @assert.unique;
   title: String @title: 'Unit';
 }
 
@@ -28,15 +28,15 @@ entity Activities : cuid, managed {
 }
 
 entity Countries : cuid, managed {
-  isocode: String;
-  title: String;
+  isocode: String @assert.unique;
+  title: String @title: 'Country';
 
   companies: Composition of many Companies on companies.country = $self;
 }
 
 entity Companies : cuid, managed {
-  code: String;
-  title: String;
+  code: String @assert.unique;
+  title: String @title: 'Company';
 
   country: Association to one Countries;
   activities: Association to many Activities on activities.company = $self;
