@@ -3,12 +3,12 @@ namespace letsmove;
 using { managed, cuid } from '@sap/cds/common';
 
 entity ActivityTypes : managed {
-  key code: String @assert.unique;
+  key code: String;
   title: String @title: 'Activity';
 }
 
 entity Units : managed {
-  key code: String @assert.unique;
+  key code: String;
   title: String @title: 'Unit';
 }
 
@@ -19,6 +19,8 @@ entity Activities : cuid, managed {
   nickname: String @title: 'Nickname';
 
   company: Association to one Companies @title: 'Company';
+
+  imageUrl: String @Core.Computed: true @UI.IsImageURL: true;
 }
 
 entity Countries : managed {
@@ -32,6 +34,6 @@ entity Companies : managed {
   key code: String @title: 'Company';
   title: String @title: 'Company';
 
-  country: Association to one Countries;
+  country: Association to one Countries @title: 'Country';
   activities: Association to many Activities on activities.company = $self;
 }

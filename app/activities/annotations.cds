@@ -17,7 +17,7 @@ annotate service.Activities with @odata.draft.enabled;
 
 annotate service.Activities with @(
   UI.SelectionFields  : [
-      type_code
+      type_code, company_code
   ],
   UI.HeaderInfo  : {
       $Type : 'UI.HeaderInfoType',
@@ -31,8 +31,16 @@ annotate service.Activities with @(
           $Type : 'UI.DataField',
           Value : nickname,
       },
+      ImageUrl: imageUrl,
+      //ImageUrl : 'activities/webapp/icons/bike.png',
   },
   UI.LineItem : [
+    {
+        $Type : 'UI.DataFieldWithUrl',
+        Url : imageUrl,
+        Value : imageUrl,
+        UrlContentType : 'image/png',
+    },
     {
       $Type : 'UI.DataField',
       Value : nickname,
@@ -62,6 +70,12 @@ annotate service.Activities with @(
         Value : createdAt,
     },
   ],
+  UI.HeaderFacets: [
+    {
+        $Type : 'UI.ReferenceFacet',
+        Target : '@UI.FieldGroup#Audit',
+    },
+  ],
   UI.Facets  : [
       {
           $Type : 'UI.ReferenceFacet',
@@ -69,6 +83,24 @@ annotate service.Activities with @(
           Label : 'Data',
       },
   ],
+  UI.FieldGroup #Audit : {
+      $Type : 'UI.FieldGroupType',
+      Data : [
+          {
+              $Type : 'UI.DataField',
+              Value : createdAt,
+          },{
+              $Type : 'UI.DataField',
+              Value : createdBy,
+          },{
+              $Type : 'UI.DataField',
+              Value : modifiedAt,
+          },{
+              $Type : 'UI.DataField',
+              Value : modifiedBy,
+          },
+      ],
+  },
   UI.FieldGroup #Main: {
     $Type : 'UI.FieldGroupType',
     Data : [
@@ -163,7 +195,6 @@ annotate service.Activities with @(
   }
 );
 
-
 // Enable F4 Value Help, Semantic Key and show title instead of ID
 annotate service.Units with @( cds.odata.valuelist: true );
 annotate service.Units with {
@@ -183,10 +214,10 @@ annotate service.ActivityTypes with {
 
 annotate service.Companies with @( cds.odata.valuelist: true );
 annotate service.Companies with {
-    code @Common : {
+    /*code @Common : {
         Text: title,
         TextArrangement : #TextOnly
-     };
+     };*/
 
     country @Common: {
       ValueListWithFixedValues: true,
