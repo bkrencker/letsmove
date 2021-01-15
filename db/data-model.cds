@@ -22,14 +22,14 @@ entity Activities : cuid, managed {
 }
 
 entity Countries : managed {
-  key code: String;
+  key code: String @title: 'Country';
   title: String @title: 'Country';
 
   companies: Composition of many Companies on companies.country = $self;
 }
 
 entity Companies : managed {
-  key code: String;
+  key code: String @title: 'Company';
   title: String @title: 'Company';
 
   country: Association to one Countries;

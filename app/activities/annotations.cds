@@ -127,15 +127,15 @@ annotate service.Activities with {
           {
               $Type : 'Common.ValueListParameterInOut',
               LocalDataProperty : company_code,
-              ValueListProperty : 'ID',
-          },
-          {
-              $Type : 'Common.ValueListParameterDisplayOnly',
               ValueListProperty : 'code',
           },
           {
               $Type : 'Common.ValueListParameterDisplayOnly',
-              ValueListProperty : 'country_ID',
+              ValueListProperty : 'title',
+          },
+          {
+              $Type : 'Common.ValueListParameterDisplayOnly',
+              ValueListProperty : 'country_code',
           },
       ],
     },
@@ -183,7 +183,7 @@ annotate service.ActivityTypes with {
 
 annotate service.Companies with @( cds.odata.valuelist: true );
 annotate service.Companies with {
-    ID @Common : {
+    code @Common : {
         Text: title,
         TextArrangement : #TextOnly
      };
@@ -197,7 +197,7 @@ annotate service.Companies with {
 
 annotate service.Countries with @( cds.odata.valuelist: true );
 annotate service.Countries with {
-    ID @Common : {
+    code @Common : {
         Text: title,
         TextArrangement : #TextOnly
      }
