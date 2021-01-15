@@ -30,13 +30,11 @@
 							<items>
 								<VBox id="vBoxDistance" width="75%" class="sapUiSmallMarginEnd">
 									<items>
-										<Label text="Distanz" id="labelDistance" labelFor="inputDistance" width="100%" />
-										<Input id="inputDistance" type="Number" required="true"/>
+										<Input id="inputDistance" placeholder="Distanz" type="Number" required="true" 	value="{ path: 'validation>/distance'}"/>
 									</items>
 								</VBox>
 								<VBox id="vBoxUnitSelection" width="25%">
 									<items>
-										<Label text="Einheit" id="labelUnit" labelFor="inputUnit" width="100%"/>
 										<SegmentedButton id="segmentBtnUnit" width="100%" items="{/Units}">
                         <items>
                             <SegmentedButtonItem text="{title}" key="{code}" width="50px" />
@@ -46,12 +44,11 @@
 								</VBox>
 							</items>
 						</HBox>
-						<HBox id="hBoxActivity" width="100%">
+						<HBox id="hBoxActivity" width="100%" class="sapUiSmallMarginTop">
 							<items>
 								<VBox id="vBoxActivity">
 									<items>
-                    <Label text="Distanz" id="labelActivity" labelFor="segmentBtnActivity" />
-										<SegmentedButton  id="segmentBtnActivity" items="{/ActivityTypes}" width="100%">
+                    <SegmentedButton  id="segmentBtnActivity" items="{/ActivityTypes}" width="100%">
                         <items>
                             <SegmentedButtonItem key="{code}" icon="resources/img/icons/{code}.png" press="setNewIcon" />
                         </items>
@@ -60,20 +57,19 @@
 								</VBox>
 							</items>
 						</HBox>
-						<HBox id="hBoxNickname">
+						<HBox id="hBoxNickname" class="sapUiSmallMarginTop">
 							<items>
 								<VBox width="100%" id="vBoxNickname" class="sapUiSmallMarginEnd">
 									<items>
-										<Label id="labelNickname" text="Nickname" labelFor="inputNickname" width="100%"/>
-										<Input id="inputNickname" type="Text" required="true" />
+										<Input id="inputNickname" placeholder="Nickname" type="Text" required="true" />
 									</items>
 								</VBox>
 								<VBox id="vBoxCompany" width="100%">
 									<items>
-                    <Label id="labelCompany" text="Gesellschaft" labelFor="comboCompany" width="100%"/>
-										<ComboBox id="comboCompany"
+                    <ComboBox id="comboCompany"
                       showSecondaryValues="true"
                       filterSecondaryValues= "true"
+                      placeholder="Gesellschaft"
                       items="{
                         path: '/CompaniesView',
                         sorter: {
@@ -90,7 +86,7 @@
 						</HBox>
 						<HBox id="hBoxSend" justifyContent="Center">
 							<items>
-								<Button id="btnSend" text="Senden" enabled="false" press="register"/>
+								<Button id="btnSend" text="Senden" press="createActivity"/>
 							</items>
 						</HBox>
 					</items>
