@@ -2,10 +2,10 @@ html,
 body {
   height: 100%;
   margin: 0;
-  font-family: Montserrat;
 }
 
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400');
 
 #splashScreen {
   height: 100%;
@@ -18,52 +18,157 @@ body {
   background-repeat: no-repeat;
 }
 
-.wrap {
+
+
+
+.group {
   position: absolute;
+  display: inline-block;
+  line-height: 16px;
   top: 65%;
   left: 50%;
-  transform: translate(-50%, -50%);
+}
+
+.bigSqr {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  transform-origin: bottom left;
+  -webkit-animation: bigSqrShrink 1s linear infinite;
+          animation: bigSqrShrink 1s linear infinite;
+}
+
+.square {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #FFF;
+}
+
+.first {
+  left: 0px;
+  top: 20px;
+}
+
+.second {
+  left: 20px;
+  top: 20px;
+  -webkit-animation: drop2 1s linear infinite;
+          animation: drop2 1s linear infinite;
+}
+
+.third {
+  left: 0px;
+  top: 0px;
+  -webkit-animation: drop3 1s linear infinite;
+          animation: drop3 1s linear infinite;
+}
+
+.fourth {
+  left: 20px;
+  top: 0px;
+  -webkit-animation: drop4 1s linear infinite;
+          animation: drop4 1s linear infinite;
 }
 
 .text {
-  color: #ffffff;
-  display: inline-block;
-  margin-left: 5px;
+  line-height: 16px;
+  font-family: "Open Sans", "Roboto", Arial, sans-serif;
+  font-weight: 400;
+  color: #FFF;
+  display: block;
+  margin: 10px auto;
+  padding: 3px;
 }
 
-.bounceball {
-  position: relative;
-  display: inline-block;
-  height: 37px;
-  width: 15px;
-}
-
-.bounceball::before {
-    position: absolute;
-    content: '';
-    display: block;
-    top: 0;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    transform-origin: 50%;
-    animation: bounce 500ms alternate infinite ease;
-  }
-
-@keyframes bounce {
+@-webkit-keyframes bigSqrShrink {
   0% {
-    top: 30px;
-    height: 5px;
-    border-radius: 60px 60px 20px 20px;
-    transform: scaleX(2);
+    transform: scale(1);
   }
-  35% {
-    height: 15px;
-    border-radius: 50%;
-    transform: scaleX(1);
+  90% {
+    transform: scale(1);
   }
   100% {
-    top: 0;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes bigSqrShrink {
+  0% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.5);
+  }
+}
+@-webkit-keyframes drop2 {
+  0% {
+    transform: translateY(-50px);
+  }
+  25% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes drop2 {
+  0% {
+    transform: translateY(-50px);
+  }
+  25% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@-webkit-keyframes drop3 {
+  0% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes drop3 {
+  0% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@-webkit-keyframes drop4 {
+  0% {
+    transform: translateY(-50px);
+  }
+  75% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes drop4 {
+  0% {
+    transform: translateY(-50px);
+  }
+  75% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(0);
   }
 }
