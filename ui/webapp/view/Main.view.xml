@@ -25,7 +25,7 @@
 										<Label text="Einheit" id="labelUnit" labelFor="inputUnit" width="100%"/>
 										<SegmentedButton id="segmentBtnUnit" width="100%" items="{/Units}">
                         <items>
-                            <SegmentedButtonItem text="{title}" key="{code}" width="50%"/>
+                            <SegmentedButtonItem text="{title}" key="{code}" width="50%" />
                         </items>
                     </SegmentedButton>
 									</items>
@@ -39,7 +39,7 @@
                     <Label text="Distanz" id="labelActivity" labelFor="segmentBtnActivity" width="100%" />
 										<SegmentedButton width="100%" id="segmentBtnActivity" items="{/ActivityTypes}">
                         <items>
-                            <SegmentedButtonItem text="{title}" code="{code}"/>
+                            <SegmentedButtonItem code="{code}" icon="resources/img/icons/{code}.png" press="setNewIcon" />
                         </items>
                     </SegmentedButton>
 									</items>
