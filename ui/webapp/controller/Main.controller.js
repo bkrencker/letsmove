@@ -11,6 +11,28 @@ sap.ui.define([
             var rand = Math.ceil(Math.random() * Math.floor(11));
             //Set Random background image
             this.byId("idAppControl").setBackgroundImage("resources/img/img_" + rand + ".jpg");
+
+            var oModel = new sap.ui.model.json.JSONModel();
+
+            this.getView().setModel(oModel, "validation");
+            this.getModel("validation").setData({
+              type: null,
+              distance: null,
+              uom: null,
+              nickname: null,
+              company: null
+            });
+
+        },
+
+        createActivity: function () {
+          var formData = this.getModel("validation").getData();
+          var oListBinding = this.getModel().bindList("/Activities");
+          var oContext = oListBinding.create(formData, true);
+            oContext.created().then(function () {
+              // Visitor successfully created, delete form Data
+              this.getModel("validation").setData({});
+            }.bind(this).bind(oContext));
         },
 
         setNewIcon: function (oEvent) {
