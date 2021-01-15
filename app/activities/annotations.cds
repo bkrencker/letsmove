@@ -131,6 +131,10 @@ annotate service.Activities with {
           },
           {
               $Type : 'Common.ValueListParameterDisplayOnly',
+              ValueListProperty : 'code',
+          },
+          {
+              $Type : 'Common.ValueListParameterDisplayOnly',
               ValueListProperty : 'country_ID',
           },
       ],
