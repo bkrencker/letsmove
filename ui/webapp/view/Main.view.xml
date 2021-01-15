@@ -14,39 +14,39 @@
 					<items>
 						<HBox id="hBoxDistnace">
 							<items>
-								<VBox id="vBoxDistance" width="100%" class="sapUiSmallMarginEnd">
+								<VBox id="vBoxDistance" width="75%" class="sapUiSmallMarginEnd">
 									<items>
 										<Label text="Distanz" id="labelDistance" labelFor="inputDistance" width="100%" />
 										<Input id="inputDistance" required="true" type="Text"/>
 									</items>
 								</VBox>
-								<VBox id="vBoxUnitSelection" width="100%">
+								<VBox id="vBoxUnitSelection" width="25%">
 									<items>
 										<Label text="Einheit" id="labelUnit" labelFor="inputUnit" width="100%"/>
 										<SegmentedButton id="segmentBtnUnit" width="100%" items="{/Units}">
                         <items>
-                            <SegmentedButtonItem text="{title}" key="{code}" width="50%" />
+                            <SegmentedButtonItem text="{title}" key="{code}" width="50px" />
                         </items>
                     </SegmentedButton>
 									</items>
 								</VBox>
 							</items>
 						</HBox>
-						<HBox id="hBoxActivity">
+						<HBox id="hBoxActivity" width="100%">
 							<items>
-								<VBox width="100%" id="vBoxActivity" class="sapUiSmallMarginEnd">
+								<VBox id="vBoxActivity">
 									<items>
-                    <Label text="Distanz" id="labelActivity" labelFor="segmentBtnActivity" width="100%" />
-										<SegmentedButton width="100%" id="segmentBtnActivity" items="{/ActivityTypes}">
+                    <Label text="Distanz" id="labelActivity" labelFor="segmentBtnActivity" />
+										<SegmentedButton  id="segmentBtnActivity" items="{/ActivityTypes}" width="100%">
                         <items>
-                            <SegmentedButtonItem code="{code}" icon="resources/img/icons/{code}.png" press="setNewIcon" />
+                            <SegmentedButtonItem key="{code}" icon="resources/img/icons/{code}.png" press="setNewIcon" />
                         </items>
                     </SegmentedButton>
 									</items>
 								</VBox>
 							</items>
 						</HBox>
-						<HBox width="100%" id="hBoxNickname">
+						<HBox id="hBoxNickname">
 							<items>
 								<VBox width="100%" id="vBoxPLZ" class="sapUiSmallMarginEnd">
 									<items>
@@ -54,9 +54,9 @@
 										<Input id="inputNickname" type="Text" required="true" />
 									</items>
 								</VBox>
-								<VBox id="vBoxCity" width="100%">
+								<VBox id="vBoxCompany" width="100%">
 									<items>
-                    <Label id="labelCity" text="Ort" labelFor="comboCompany" width="100%"/>
+                    <Label id="labelCompany" text="Ort" labelFor="comboCompany" width="100%"/>
 										<ComboBox id="comboCompany"
                       items="{
                         path: '/CompaniesView',
