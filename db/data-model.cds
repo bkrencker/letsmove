@@ -21,15 +21,15 @@ entity Activities : cuid, managed {
   company: Association to one Companies @title: 'Company';
 }
 
-entity Countries : cuid, managed {
-  isocode: String @assert.unique;
+entity Countries : managed {
+  key code: String;
   title: String @title: 'Country';
 
   companies: Composition of many Companies on companies.country = $self;
 }
 
-entity Companies : cuid, managed {
-  code: String @assert.unique;
+entity Companies : managed {
+  key code: String;
   title: String @title: 'Company';
 
   country: Association to one Countries;

@@ -21,8 +21,8 @@ service CatalogService {
     };
 
     view CompaniesView as select from Companies {
-      key ID as CompanyId,
-          code as CompanyCode,
+      key code as CompanyCode,
+      key country.code as CountryCode,
           title as CompanyTitle,
           country.title as CountryTitle
     };

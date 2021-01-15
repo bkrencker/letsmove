@@ -87,7 +87,7 @@ annotate service.Activities with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : company_ID,
+            Value : company_code,
         },
         {
             $Type : 'UI.DataField',
@@ -126,7 +126,7 @@ annotate service.Activities with {
       Parameters : [
           {
               $Type : 'Common.ValueListParameterInOut',
-              LocalDataProperty : company_ID,
+              LocalDataProperty : company_code,
               ValueListProperty : 'ID',
           },
           {
@@ -155,7 +155,7 @@ annotate service.Activities with @(
   Common.SideEffects: {
     $Type : 'Common.SideEffectsType',
     SourceProperties : [
-        company_ID
+        company_code
     ],
     TargetEntities: [
       company, company.country
@@ -165,7 +165,7 @@ annotate service.Activities with @(
 
 
 // Enable F4 Value Help, Semantic Key and show title instead of ID
-annotate service.Units with @( cds.odata.valuelist: true, Common.SemanticKey : [ title ] );
+annotate service.Units with @( cds.odata.valuelist: true );
 annotate service.Units with {
     code @Common : {
         Text: title,
@@ -173,7 +173,7 @@ annotate service.Units with {
      }
 };
 
-annotate service.ActivityTypes with @( cds.odata.valuelist: true, Common.SemanticKey : [ title ] );
+annotate service.ActivityTypes with @( cds.odata.valuelist: true );
 annotate service.ActivityTypes with {
     code @Common : {
         Text: title,
@@ -181,7 +181,7 @@ annotate service.ActivityTypes with {
      }
 };
 
-annotate service.Companies with @( cds.odata.valuelist: true, Common.SemanticKey : [ title ] );
+annotate service.Companies with @( cds.odata.valuelist: true );
 annotate service.Companies with {
     ID @Common : {
         Text: title,
@@ -195,7 +195,7 @@ annotate service.Companies with {
     };
 };
 
-annotate service.Countries with @( cds.odata.valuelist: true, Common.SemanticKey : [ title ] );
+annotate service.Countries with @( cds.odata.valuelist: true );
 annotate service.Countries with {
     ID @Common : {
         Text: title,
