@@ -30,7 +30,7 @@
 							<items>
 								<VBox id="vBoxDistance" width="75%" class="sapUiSmallMarginEnd">
 									<items>
-										<Input id="inputDistance" placeholder="Distanz" type="Number" required="true" 	value="{ path: 'validation>/distance'}"/>
+										<Input id="inputDistance" placeholder="Enter distance" type="Number" required="true" 	value="{ path: 'validation>/distance'}"/>
 									</items>
 								</VBox>
 								<VBox id="vBoxUnitSelection" width="25%">
@@ -61,7 +61,7 @@
 							<items>
 								<VBox width="100%" id="vBoxNickname" class="sapUiSmallMarginEnd">
 									<items>
-										<Input id="inputNickname" placeholder="Nickname" type="Text" required="true" />
+										<Input id="inputNickname" placeholder="Your nickname" type="Text" required="true" />
 									</items>
 								</VBox>
 								<VBox id="vBoxCompany" width="100%">
@@ -69,7 +69,7 @@
                     <ComboBox id="comboCompany"
                       showSecondaryValues="true"
                       filterSecondaryValues= "true"
-                      placeholder="Gesellschaft"
+                      placeholder="Select Company"
                       items="{
                         path: '/CompaniesView',
                         sorter: {
