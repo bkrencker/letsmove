@@ -23,8 +23,8 @@ service CatalogService {
     view CompaniesView as select from Companies {
       key code as CompanyCode,
       key country.code as CountryCode,
-          title as CompanyTitle,
-          country.title as CountryTitle
+      key country.title as CountryTitle,
+      title as CompanyTitle
     };
 
     @readonly entity Countries as projection on letsmove.Countries;
