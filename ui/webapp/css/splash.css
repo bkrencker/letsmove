@@ -2,7 +2,10 @@ html,
 body {
   height: 100%;
   margin: 0;
+  font-family: Montserrat;
 }
+
+
 
 #splashScreen {
   height: 100%;
@@ -15,240 +18,52 @@ body {
   background-repeat: no-repeat;
 }
 
-.splashAnimation>div {
-  width: 1em;
-  height: 1em;
-  border-radius: 100%;
-  display: block;
-  float: left;
-  margin: 0px;
-  position: relative;
-  top: -0.5em;
-  left: -1.5em;
-  text-indent: 10px
-}
-
-.splashAnimation {
+.wrap {
   position: absolute;
-  width: 5em;
   top: 65%;
-  left: 50%
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.splashAnimation>div {
-  width: 1em;
-  height: 1em;
-  border-radius: 100%;
-  display: block;
-  float: left;
-  margin: 0px;
+.text {
+  color: #ffffff;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.bounceball {
   position: relative;
-  top: -0.5em;
-  left: -1.5em;
-  text-indent: 1px
+  display: inline-block;
+  height: 37px;
+  width: 15px;
 }
 
-.splashAnimation>div::before,
-.splashAnimation>div::after {
-  content: "";
-  opacity: 1;
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 100%
-}
+.bounceball::before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    transform-origin: 50%;
+    animation: bounce 500ms alternate infinite ease;
+  }
 
-.splashAnimation>div::before {
-  background: #fdfdfd
-}
-
-.splashAnimation>div::after {
-  box-shadow: inset 0 0 2px 1px rgb(255, 255, 255)
-}
-
-.splashAnimation>div,
-.splashAnimation>div::before,
-.splashAnimation>div::after {
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both
-}
-
-.splashAnimationStandard>div {
-  -webkit-animation: sapUiBusyAnimationStandard 1.8s infinite ease-in-out;
-  animation: sapUiBusyAnimationStandard 1.8s infinite ease-in-out
-}
-
-.splashAnimationStandard>div::before {
-  -webkit-animation: sapUiBusyAnimationStandardBackground 1.8s infinite ease-in-out;
-  animation: sapUiBusyAnimationStandardBackground 1.8s infinite ease-in-out
-}
-
-.splashAnimationStandard>div::after {
-  -webkit-animation: sapUiBusyAnimationStandardShadow 1.8s infinite ease-in-out;
-  animation: sapUiBusyAnimationStandardShadow 1.8s infinite ease-in-out
-}
-
-.splashAnimationStandard>div:nth-child(1) {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s
-}
-
-.splashAnimationStandard>div:nth-child(2) {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s
-}
-
-
-
-@keyframes sapUiBusyAnimationStandard {
-
-  0%,
-  80%,
+@keyframes bounce {
+  0% {
+    top: 30px;
+    height: 5px;
+    border-radius: 60px 60px 20px 20px;
+    transform: scaleX(2);
+  }
+  35% {
+    height: 15px;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
   100% {
-    transform: scale(.4)
-  }
-
-  40% {
-    transform: scale(1)
-  }
-}
-
-@-webkit-keyframes sapUiBusyAnimationStandard {
-
-  0%,
-  80%,
-  100% {
-    -webkit-transform: scale(.4)
-  }
-
-  40% {
-    -webkit-transform: scale(1)
-  }
-}
-
-@keyframes sapUiBusyAnimationStandardBackground {
-
-  0%,
-  80%,
-  100% {
-    opacity: 1
-  }
-
-  40% {
-    opacity: 0.1
-  }
-}
-
-@-webkit-keyframes sapUiBusyAnimationStandardBackground {
-
-  0%,
-  80%,
-  100% {
-    opacity: 1
-  }
-
-  40% {
-    opacity: 0.1
-  }
-}
-
-@keyframes sapUiBusyAnimationStandardShadow {
-
-  0%,
-  80%,
-  100% {
-    opacity: 0
-  }
-
-  40% {
-    opacity: 1
-  }
-}
-
-@-webkit-keyframes sapUiBusyAnimationStandardShadow {
-
-  0%,
-  80%,
-  100% {
-    opacity: 0
-  }
-
-  40% {
-    opacity: 1
-  }
-}
-
-@keyframes sapUiBusyAnimationSmall {
-
-  0%,
-  100% {
-    transform: scale(.2)
-  }
-
-  50% {
-    transform: scale(1)
-  }
-}
-
-@-webkit-keyframes sapUiBusyAnimationSmall {
-
-  0%,
-  100% {
-    -webkit-transform: scale(.2)
-  }
-
-  50% {
-    -webkit-transform: scale(1)
-  }
-}
-
-@keyframes sapUiBusyAnimationSmallBackground {
-
-  0%,
-  100% {
-    opacity: 1
-  }
-
-  50% {
-    opacity: 0.1
-  }
-}
-
-@-webkit-keyframes sapUiBusyAnimationSmallBackground {
-
-  0%,
-  100% {
-    opacity: 1
-  }
-
-  50% {
-    opacity: 0.1
-  }
-}
-
-@keyframes sapUiBusyAnimationSmallShadow {
-
-  0%,
-  100% {
-    opacity: 0
-  }
-
-  50% {
-    opacity: 1
-  }
-}
-
-@-webkit-keyframes sapUiBusyAnimationSmallShadow {
-
-  0%,
-  100% {
-    opacity: 0
-  }
-
-  50% {
-    opacity: 1
+    top: 0;
   }
 }
