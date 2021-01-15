@@ -2,11 +2,25 @@
   displayBlock="true"
   xmlns="sap.m"
   xmlns:core="sap.ui.core"
+  xmlns:smart="sap.suite.ui.microchart"
   xmlns:mvc="sap.ui.core.mvc">
   <App id="idAppControl" >
     <Page id="page" showHeader="false" class="transparent-bg">
 		<FlexBox id="flexBoxContent" alignItems="Center" justifyContent="Center" class="sapUiSmallMargin">
 			<Panel id="formPanel" class="panel">
+        <FlexBox id="flexBoxMicroBulletChart" alignItems="Center" justifyContent="Center">
+        <smart:BulletMicroChart id="microBulletChart" targetValue="100" forecastValue="110" class="sapUiSmallMargin" press="press" width="16rem">
+          <smart:actual>
+            <smart:BulletMicroChartData id="microBulletChartActualData" value="40" color="Good"></smart:BulletMicroChartData>
+          </smart:actual>
+          <smart:thresholds>
+            <smart:BulletMicroChartData id="microBulletChartThresholds0" value="0" color="Error" />
+            <smart:BulletMicroChartData id="microBulletChartThresholds50" value="50" color="Critical"/>
+            <smart:BulletMicroChartData id="microBulletChartThresholds150" value="150" color="Critical"/>
+            <smart:BulletMicroChartData id="microBulletChartThresholds200" value="200" color="Error"/>
+          </smart:thresholds>
+        </smart:BulletMicroChart>
+        </FlexBox>
 				<FlexBox id="flexBoxLogo" alignItems="Center" justifyContent="Center">
 					<Image id="imgLogo" src="resources/img/emmi_logo.png" width="250px" class="sapUiMediumMarginTopBottom" press="reload"/>
 				</FlexBox>
