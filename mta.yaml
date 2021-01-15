@@ -16,7 +16,7 @@ modules:
     type: nodejs
     path: gen/srv
     parameters:
-      memory: 384M
+      memory: 256M
       disk-quote: 1024M
     requires:
       - name: letsmove-db
@@ -38,7 +38,7 @@ modules:
     path: app
     parameters:
       disk-quota: 512M
-      memory: 256M
+      memory: 192M
     requires:
       - name: ui5_uaa
       - name: srv_api
@@ -54,7 +54,7 @@ modules:
     path: approuter
     parameters:
       disk-quota: 512M
-      memory: 256M
+      memory: 192M
     requires:
       - name: ui5_html5_repo_runtime
       - name: srv_api
