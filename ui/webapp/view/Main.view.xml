@@ -58,6 +58,8 @@
 									<items>
                     <Label id="labelCompany" text="Ort" labelFor="comboCompany" width="100%"/>
 										<ComboBox id="comboCompany"
+                      showSecondaryValues="true"
+                      filterSecondaryValues= "true"
                       items="{
                         path: '/CompaniesView',
                         sorter: {
@@ -66,7 +68,7 @@
                           group: true
                         }
                       }">
-                      <core:Item key="{CountryTitle}" text="{CompanyTitle}" id="Test" />
+                      <core:ListItem key="{CountryTitle}" text="{CompanyTitle}" additionalText="{CompanyCode}" id="Test" />
                     </ComboBox>
 									</items>
 								</VBox>
