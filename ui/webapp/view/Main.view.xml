@@ -17,7 +17,7 @@
 								<VBox id="vBoxDistance" width="75%" class="sapUiSmallMarginEnd">
 									<items>
 										<Label text="Distanz" id="labelDistance" labelFor="inputDistance" width="100%" />
-										<Input id="inputDistance" required="true" type="Text"/>
+										<Input id="inputDistance" type="Number" required="true"/>
 									</items>
 								</VBox>
 								<VBox id="vBoxUnitSelection" width="25%">
@@ -48,7 +48,7 @@
 						</HBox>
 						<HBox id="hBoxNickname">
 							<items>
-								<VBox width="100%" id="vBoxPLZ" class="sapUiSmallMarginEnd">
+								<VBox width="100%" id="vBoxNickname" class="sapUiSmallMarginEnd">
 									<items>
 										<Label id="labelNickname" text="Nickname" labelFor="inputNickname" width="100%"/>
 										<Input id="inputNickname" type="Text" required="true" />
@@ -56,7 +56,7 @@
 								</VBox>
 								<VBox id="vBoxCompany" width="100%">
 									<items>
-                    <Label id="labelCompany" text="Ort" labelFor="comboCompany" width="100%"/>
+                    <Label id="labelCompany" text="Gesellschaft" labelFor="comboCompany" width="100%"/>
 										<ComboBox id="comboCompany"
                       showSecondaryValues="true"
                       filterSecondaryValues= "true"
@@ -64,11 +64,11 @@
                         path: '/CompaniesView',
                         sorter: {
                           path: 'CountryTitle',
-                          descending: false,
+                          descending: true,
                           group: true
                         }
                       }">
-                      <core:ListItem key="{CountryTitle}" text="{CompanyTitle}" additionalText="{CompanyCode}" id="Test" />
+                      <core:ListItem key="{CompanyCode}" text="{CompanyTitle}" additionalText="{CompanyCode}" />
                     </ComboBox>
 									</items>
 								</VBox>
