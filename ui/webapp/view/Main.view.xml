@@ -35,7 +35,7 @@
 								</VBox>
 								<VBox id="vBoxUnitSelection" width="25%">
 									<items>
-										<SegmentedButton id="segmentBtnUnit" width="100%" items="{/Units}">
+										<SegmentedButton id="segmentBtnUnit" width="100%" items="{/Units}" selectedKey="{ path: 'validation>/uom'}">
                         <items>
                             <SegmentedButtonItem text="{title}" key="{code}" width="50px" />
                         </items>
@@ -48,7 +48,7 @@
 							<items>
 								<VBox id="vBoxActivity">
 									<items>
-                    <SegmentedButton  id="segmentBtnActivity" items="{/ActivityTypes}" width="100%">
+                    <SegmentedButton  id="segmentBtnActivity" items="{/ActivityTypes}" width="100%" selectedKey="{ path: 'validation>/type'}">
                         <items>
                             <SegmentedButtonItem key="{code}" icon="resources/img/icons/{code}.png" press="setNewIcon" />
                         </items>
@@ -61,7 +61,7 @@
 							<items>
 								<VBox width="100%" id="vBoxNickname" class="sapUiSmallMarginEnd">
 									<items>
-										<Input id="inputNickname" placeholder="Your nickname" type="Text" required="true" />
+										<Input id="inputNickname" placeholder="Your nickname" value="{ path: 'validation>/nickname'}" type="Text" />
 									</items>
 								</VBox>
 								<VBox id="vBoxCompany" width="100%">
@@ -69,6 +69,7 @@
                     <ComboBox id="comboCompany"
                       showSecondaryValues="true"
                       filterSecondaryValues= "true"
+                      value="{ path: 'validation>/company'}"
                       placeholder="Select Company"
                       items="{
                         path: '/CompaniesView',
