@@ -1,8 +1,6 @@
 using letsmove as letsmove from '../db/data-model';
 
 service CatalogService {
-    @readonly entity Books as projection on letsmove.Books;
-
     entity Activities as projection on letsmove.Activities;
 
     view TotalActivity as select from Activities   {

@@ -2,12 +2,6 @@ namespace letsmove;
 
 using { managed, cuid } from '@sap/cds/common';
 
-entity Books {
-  key ID : Integer;
-  title  : String;
-  stock  : Integer;
-}
-
 entity ActivityTypes : managed {
   key code: String @assert.unique;
   title: String @title: 'Activity';
