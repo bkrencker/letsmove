@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<script
+      id="sap-ui-bootstrap"
+      data-sap-ui-theme="sap_fiori_3"
+			src="https://ui5.sap.com/resources/sap-ui-integration.js">
+    </script>
+    <style>
+			.myCard {
+				margin: 1rem;
+				width: 25rem;
+			}
+		</style>
+	</head>
+	<body>
+    <ui-integration-card
+			badge="New"
+			manifest="./list-card.json"
+			data-mode="Active"
+			base-url="./"
+			class="myCard">
+    </ui-integration-card>
+
+    <ui-integration-card
+			badge="New"
+			manifest="./table-card.json"
+			data-mode="Active"
+			base-url="./"
+			class="myCard">
+    </ui-integration-card>
+
+    <ui-integration-card
+			badge="New"
+			manifest="./filter-card.json"
+			data-mode="Active"
+			base-url="./"
+			class="myCard">
+		</ui-integration-card>
+	</body>
+</html>

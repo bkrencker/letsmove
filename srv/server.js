@@ -13,9 +13,9 @@ cds.on('bootstrap', (app) => {
         helmet.contentSecurityPolicy({
             directives: {
             ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-            "default-src": ["'self'", 'sapui5.hana.ondemand.com'],
-            "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'sapui5.hana.ondemand.com'],
-            "img-src": ["'self'", 'sapui5.hana.ondemand.com']
+            "default-src": ["'self'", 'sapui5.hana.ondemand.com', 'https://ui5.sap.com'],
+            "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'sapui5.hana.ondemand.com', 'https://ui5.sap.com'],
+            "img-src": ["'self'", 'sapui5.hana.ondemand.com', 'https://ui5.sap.com']
             }
         })
     );

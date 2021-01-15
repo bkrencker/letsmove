@@ -1,0 +1,86 @@
+{
+	"sap.app": {
+		"id": "card.explorer.filters.dynamicFilter",
+		"type": "card",
+		"title": "Sample of a Card with filters"
+	},
+	"sap.card": {
+		"configuration": {
+			"filters": {
+				"Country": {
+					"value": "{{parameters.selectedCountryCode}}",
+					"type": "String",
+					"label": "Country",
+					"description": "Filter the Companies by Country.",
+					"item": {
+						"path": "/value",
+						"template": {
+							"key": "{code}",
+							"title": "{title}"
+						}
+					},
+					"data": {
+						"request": {
+							"url": "{{destinations.letsmove}}/Countries"
+						}
+					}
+				}
+			},
+			"destinations": {
+				"letsmove": {
+					"name": "admin",
+					"defaultUrl": "/admin"
+				}
+			},
+			"parameters": {
+				"maxOrdersShown": {
+					"value": 6,
+					"type": "integer",
+					"label": "Number of Companies",
+					"description": "How many Companies to show in the list."
+				},
+				"selectedCountryCode": {
+					"value": "IT",
+					"type": "String",
+					"label": "The default selected Country"
+				}
+			}
+		},
+		"data": {
+			"request": {
+				"url": "{{destinations.letsmove}}/Companies",
+				"parameters": {
+					"$top": "{{parameters.maxOrdersShown}}",
+          "$filter": "country_code eq '{filters>/Country/value}'",
+          "$count": true
+				}
+			},
+			"path": "/value/"
+		},
+		"type": "List",
+		"header": {
+			"title": "Companies by Country {filters>/Country/selectedItem/title}",
+			"icon": {
+				"src": "sap-icon://product"
+			}
+		},
+		"content": {
+			"item": {
+				"title": "{code}",
+				"description": "{title}",
+				"info": {
+					"value": "{title}"
+				},
+				"actions": [
+					{
+						"type": "Navigation",
+						"parameters": {
+							"url": "./?OrderID={OrderID}&CountryID={filters>/Country/value}"
+						}
+					}
+				]
+			},
+      "maxItems": "{{parameters.maxOrdersShown}}"
+		}
+	}
+}
