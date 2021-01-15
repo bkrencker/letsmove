@@ -8,6 +8,9 @@
     <Page id="page" showHeader="false" class="transparent-bg">
 		<FlexBox id="flexBoxContent" alignItems="Center" justifyContent="Center" class="sapUiSmallMargin">
 			<Panel id="formPanel" class="panel">
+        <FlexBox id="flexBoxLogo" alignItems="Center" justifyContent="Center">
+					<Image id="imgLogo" src="resources/img/emmi_logo.png" width="200px" class="sapUiMediumMarginTopBottom" press="reload"/>
+				</FlexBox>
         <FlexBox id="flexBoxMicroBulletChart" alignItems="Center" justifyContent="Center">
         <smart:BulletMicroChart id="microBulletChart" targetValue="100" forecastValue="110" class="sapUiSmallMargin" press="press" width="16rem">
           <smart:actual>
@@ -21,9 +24,6 @@
           </smart:thresholds>
         </smart:BulletMicroChart>
         </FlexBox>
-				<FlexBox id="flexBoxLogo" alignItems="Center" justifyContent="Center">
-					<Image id="imgLogo" src="resources/img/emmi_logo.png" width="250px" class="sapUiMediumMarginTopBottom" press="reload"/>
-				</FlexBox>
 				<VBox id="vBoxForm">
 					<items>
 						<HBox id="hBoxDistnace">
