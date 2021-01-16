@@ -7,11 +7,11 @@ sap.ui.define([
 
 	var aMobileCards = [];
 
-	return Controller.extend("sap.ui.integration.sample.HostActions.HostActions", {
+	return Controller.extend("letsmove.dashboard.Main", {
 
 		onInit: function () {
 
-			/*var oHost = new Host({
+			var oHost = new Host({
 				actions: [
 					{
 						type: 'Navigation',
@@ -64,7 +64,7 @@ sap.ui.define([
 			this.getView().byId('card1').setHost(oHost);
 			this.getView().byId('card2').setHost(oHost);
       this.getView().byId('card3').setHost(oHost);
-      */
+
 		}
 	});
 });

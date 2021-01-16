@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="sap.ui.integration.sample.HostActions.HostActions"
+	controllerName="letsmove.dashboard.Main"
 	xmlns:w="sap.ui.integration.widgets"
 	xmlns:f="sap.f"
   xmlns="sap.m"
