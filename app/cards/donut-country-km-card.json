@@ -37,27 +37,12 @@
         "path": "/value/0"
       },
       "title": "Total Distance by Country",
-      "subTitle": "Total Distance",
-			"unitOfMeasurement": "Km",
 			"mainIndicator": {
 				"number": "{totalKm}",
 				"unit": "km",
 				"trend": "Up",
 				"state": "Good"
-			},
-			"details": "details",
-			"sideIndicators": [
-				{
-					"title": "Target",
-					"number": "500'000",
-					"unit": "km"
-				},
-				{
-					"title": "Deviation",
-					"number": "99",
-					"unit": "%"
-				}
-			]
+			}
 		},
 		"content": {
 			"chartType": "Donut",

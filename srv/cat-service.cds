@@ -93,6 +93,58 @@ service CatalogService {
       ), 2) as totalMi: Decimal(10,2)
     };
 
+    view TotalByMonth as select from Activities {
+      key ID,
+
+      extract (year from createdAt) as year: String,
+      extract (month from createdAt) as month: String,
+      extract (year from createdAt) || '-' || lpad( extract (month from createdAt), 2, 0 ) as formattedDate: String,
+
+      case extract (month from createdAt)
+        when 1 then 'January'
+        when 2 then 'February'
+        when 3 then 'March'
+        when 4 then 'April'
+        when 5 then 'May'
+        when 6 then 'June'
+        when 7 then 'July'
+        when 8 then 'August'
+        when 9 then 'September'
+        when 10 then 'October'
+        when 11 then 'November'
+        when 12 then 'December'
+        else ''
+      end as monthString: String,
+
+      case extract (month from createdAt)
+        when 1 then 'January'
+        when 2 then 'February'
+        when 3 then 'March'
+        when 4 then 'April'
+        when 5 then 'May'
+        when 6 then 'June'
+        when 7 then 'July'
+        when 8 then 'August'
+        when 9 then 'September'
+        when 10 then 'October'
+        when 11 then 'November'
+        when 12 then 'December'
+        else ''
+      end || ' (' || extract (year from createdAt) || ')' as monthYearString: String,
+
+      createdAt,
+      createdBy,
+      modifiedAt,
+      modifiedBy,
+
+      nickname,
+      distance,
+      uom,
+      type,
+      imageUrl,
+      company
+    };
+
     view CompaniesView as select from Companies {
       key code as CompanyCode,
       key country.code as CountryCode,
