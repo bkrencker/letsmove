@@ -7,8 +7,9 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^4",
-    "express": "^4",
     "@sap/hana-client": "^2.4.177",
+    "@sap/hdi-deploy": "^3.11.15",
+    "express": "^4",
     "helmet": "^4.3.1"
   },
   "devDependencies": {
@@ -42,7 +43,7 @@
   "cds": {
     "requires": {
       "db": {
-        "kind": "sql",
+        "kind": "hana",
         "model": [
           "db",
           "srv"
