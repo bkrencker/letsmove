@@ -28,44 +28,43 @@
 	"sap.card": {
 		"type": "Timeline",
 		"header": {
-			"title": "Upcoming Activities",
-			"subTitle": "For Today"
+			"title": "Emmi Activities",
+			"subTitle": "See last submitted Activities"
 		},
 		"content": {
 			"maxItems": 7,
 			"data": {
-				"json": [
-					{
-						"Title": "Weekly sync: Marketplace / Design Stream",
-						"Description": "MRR WDF18 C3.2(GLASSBOX)",
-						"Icon": "sap-icon://appointment-2",
-						"Time": "10:00 - 10:30"
-					},
-					{
-						"Title": "Video Conference for FLP@SF, S4,Hybris",
-						"Icon": "sap-icon://my-view",
-						"Time": "14:00 - 15:30"
-					},
-					{
-						"Title": "Call 'Project Nimbus'",
-						"Icon": "sap-icon://outgoing-call",
-						"Time": "16:00 - 16:30"
-					}
-				]
-			},
+        "request": {
+          "mode": "cors",
+          "method": "GET",
+          "url": "/admin/Activities",
+          "parameters": {
+            "$expand": "type,uom,company",
+            "$orderby": "createdAt desc",
+            "$top": "6"
+          }
+        },
+        "path": "/value"
+      },
 			"item": {
 				"dateTime": {
-					"value": "{Time}"
+					"value": "{= format.dateTime(${createdAt}, {format: 'yMMMd'}) }"
 				},
 				"description": {
-					"value": "{Description}"
+					"value": "{company/title} ({company/country_code})"
 				},
 				"title": {
-					"value": "{Title}"
-				},
-				"icon": {
-					"src": "{Icon}"
-				}
+					"value": "{distance} {uom/title} {type/title}"
+        },
+        "owner": {
+          "value": "{nickname}"
+        },
+				"ownerImage": {
+          "value": "/{imageUrl}"
+        },
+        "icon": {
+          "src": "sap-icon://appointment-2"
+        }
 			}
 		}
 	}

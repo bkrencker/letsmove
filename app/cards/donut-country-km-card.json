@@ -1,0 +1,107 @@
+{
+	"_version": "1.14.0",
+	"sap.app": {
+		"id": "card.explorer.donut.card",
+		"type": "card",
+		"title": "Sample of a Donut Chart",
+		"subTitle": "Sample of a Donut Chart",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"shortTitle": "A short title for this Card",
+		"info": "Additional information about this Card",
+		"description": "A long description for this Card",
+		"tags": {
+			"keywords": [
+				"Analytical",
+				"Sample"
+			]
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://donut-chart"
+		}
+	},
+	"sap.card": {
+		"type": "Analytical",
+		"header": {
+      "type": "Numeric",
+      "data": {
+        "request": {
+          "mode": "cors",
+          "method": "GET",
+          "url": "/catalog/TotalActivity"
+        },
+        "path": "/value/0"
+      },
+      "title": "Total Distance by Country",
+      "subTitle": "Total Distance",
+			"unitOfMeasurement": "Km",
+			"mainIndicator": {
+				"number": "{totalKm}",
+				"unit": "km",
+				"trend": "Up",
+				"state": "Good"
+			},
+			"details": "details",
+			"sideIndicators": [
+				{
+					"title": "Target",
+					"number": "500'000",
+					"unit": "km"
+				},
+				{
+					"title": "Deviation",
+					"number": "99",
+					"unit": "%"
+				}
+			]
+		},
+		"content": {
+			"chartType": "Donut",
+			"legend": {
+				"visible": true,
+				"position": "Bottom",
+				"alignment": "Center"
+			},
+			"plotArea": {
+				"dataLabel": {
+					"visible": true,
+					"showTotal": true
+				}
+			},
+			"title": {
+				"text": "Donut chart",
+				"visible": false,
+				"alignment": "Center"
+			},
+			"measureAxis": "size",
+			"dimensionAxis": "color",
+			"data": {
+        "request": {
+          "mode": "cors",
+          "method": "GET",
+          "url": "/catalog/TotalByCountry",
+          "parameters": {
+            "$top": "6"
+          }
+      },
+      "path": "/value"
+    },
+			"dimensions": [
+				{
+					"label": "Country",
+					"value": "{title}"
+				}
+			],
+			"measures": [
+				{
+					"label": "Distance Km",
+					"value": "{totalKm}"
+				}
+			]
+		}
+	}
+}

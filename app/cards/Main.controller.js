@@ -10,7 +10,7 @@ sap.ui.define([
 	return Controller.extend("letsmove.dashboard.Main", {
 
 		onInit: function () {
-
+      /*
 			var oHost = new Host({
 				actions: [
 					{
@@ -64,7 +64,7 @@ sap.ui.define([
 			this.getView().byId('card1').setHost(oHost);
 			this.getView().byId('card2').setHost(oHost);
       this.getView().byId('card3').setHost(oHost);
-
+      */
 		}
 	});
 });

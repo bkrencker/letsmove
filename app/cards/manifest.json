@@ -9,13 +9,15 @@
 		"rootView": {
 			"viewName": "letsmove.dashboard.Main",
 			"type": "XML",
-			"async": true
+      "async": true,
+      "id": "idAppControl"
 		},
 		"dependencies": {
 			"libs": {
 				"sap.ui.core": {},
 				"sap.f": {},
-				"sap.ui.integration": {}
+        "sap.ui.integration": {},
+        "sap.m": {}
 			}
 		},
 		"config": {
