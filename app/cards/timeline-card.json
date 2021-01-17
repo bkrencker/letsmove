@@ -41,14 +41,14 @@
           "parameters": {
             "$expand": "type,uom,company",
             "$orderby": "createdAt desc",
-            "$top": "6"
+            "$top": "7"
           }
         },
         "path": "/value"
       },
 			"item": {
 				"dateTime": {
-					"value": "{= format.dateTime(${createdAt}, {format: 'yMMMd'}) }"
+					"value": "{= format.dateTime(${createdAt}, {pattern: 'd. MMM y H:mm:ss'}) }"
 				},
 				"description": {
 					"value": "{company/title} ({company/country_code})"
