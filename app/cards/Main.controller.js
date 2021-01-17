@@ -1,8 +1,9 @@
 sap.ui.define([
 		'sap/ui/core/mvc/Controller',
 		'sap/m/MessageToast',
-		'sap/ui/integration/Host'
-	], function(Controller, MessageToast, Host) {
+    'sap/ui/integration/Host',
+    "sap/ui/core/ws/WebSocket"
+	], function(Controller, MessageToast, Host, WebSocket) {
 	"use strict";
 
 	var aMobileCards = [];
@@ -10,6 +11,15 @@ sap.ui.define([
 	return Controller.extend("letsmove.dashboard.Main", {
 
 		onInit: function () {
+      var oWS = new WebSocket("wss://businessappstudio-workspaces-ws-dk5pr-app1.eu10.applicationstudio.cloud.sap/wss");
+			oWS.attachMessage(function (oEvent) {
+				// update list
+        this.getView().byId("idTimelineCard").refresh();
+        this.getView().byId("idDonutActivityCard").refresh();
+        this.getView().byId("idDonutCompanyCard").refresh();
+        this.getView().byId("idDonutCountryCard").refresh();
+			}.bind(this));
+
       /*
 			var oHost = new Host({
 				actions: [
@@ -65,6 +75,16 @@ sap.ui.define([
 			this.getView().byId('card2').setHost(oHost);
       this.getView().byId('card3').setHost(oHost);
       */
-		}
+    },
+
+    onRefresh: function (oEvent) {
+      debugger;
+
+      this.getView().byId("idTimelineCard").refresh();
+      this.getView().byId("idDonutActivityCard").refresh();
+      this.getView().byId("idDonutCompanyCard").refresh();
+      this.getView().byId("idDonutCountryCard").refresh();
+    }
+
 	});
 });

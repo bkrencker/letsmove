@@ -6,9 +6,10 @@
 	xmlns:mvc="sap.ui.core.mvc"
   displayBlock="true">
   <App id="idAppControl" >
-    <Page title="Emmi Activities Dashboard" titleAlignment="Center">
+    <Page title="Emmi Realtime Activities Dashboard" titleAlignment="Center">
       <content>
         <f:GridContainer>
+          <!--<Button text="Refresh" press="onRefresh"/>-->
           <!--
           <w:Card id="card1" manifest="./list-card.json">
             <w:customData>
@@ -32,25 +33,25 @@
           </w:Card>
           -->
 
-          <w:Card manifest="./timeline-card.json">
+          <w:Card id="idTimelineCard" manifest="./timeline-card.json">
             <w:layoutData>
               <f:GridContainerItemLayoutData columns="3" />
             </w:layoutData>
           </w:Card>
 
-          <w:Card manifest="./donut-activitytype-km-card.json">
+          <w:Card id="idDonutActivityCard" manifest="./donut-activitytype-km-card.json">
             <w:layoutData>
               <f:GridContainerItemLayoutData columns="3" />
             </w:layoutData>
           </w:Card>
 
-          <w:Card manifest="./donut-company-km-card.json">
+          <w:Card id="idDonutCompanyCard" manifest="./donut-company-km-card.json">
             <w:layoutData>
               <f:GridContainerItemLayoutData columns="3" />
             </w:layoutData>
           </w:Card>
 
-          <w:Card manifest="./donut-country-km-card.json">
+          <w:Card id="idDonutCountryCard" manifest="./donut-country-km-card.json">
             <w:layoutData>
               <f:GridContainerItemLayoutData columns="3" />
             </w:layoutData>

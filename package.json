@@ -10,7 +10,9 @@
     "@sap/hana-client": "^2.4.177",
     "@sap/hdi-deploy": "^3.11.15",
     "express": "^4",
-    "helmet": "^4.3.1"
+    "express-ws": "^4.0.0",
+    "helmet": "^4.3.1",
+    "ws": "^7.4.2"
   },
   "devDependencies": {
     "@sap/ux-specification": "^1.84.0",
