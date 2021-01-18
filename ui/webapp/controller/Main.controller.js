@@ -16,23 +16,33 @@ sap.ui.define([
 
             this.getView().setModel(oModel, "validation");
             this.getModel("validation").setData({
-              type: null,
+              type_code: null,
               distance: null,
-              uom: null,
+              uom_code: null,
               nickname: null,
-              company: null
+              company_code: null
             });
 
         },
 
-        createActivity: function () {
+        send: function () {
           var formData = this.getModel("validation").getData();
+          this.createActivity(formData).then(function () {
+            this.getModel("validation").setData({});
+          }.bind(this));
+        },
+
+        createActivity: function (formData) {
           var oListBinding = this.getModel().bindList("/Activities");
           var oContext = oListBinding.create(formData, true);
+          var promise = new Promise(function (resolved) {
             oContext.created().then(function () {
-              // Visitor successfully created, delete form Data
-              this.getModel("validation").setData({});
+              // Activity successfully created, delete form Data
+              resolved(oContext.getObject());
             }.bind(this).bind(oContext));
+          }.bind(this));
+
+          return promise;
         },
 
         setNewIcon: function (oEvent) {
