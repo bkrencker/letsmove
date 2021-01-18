@@ -28,7 +28,7 @@
 	"sap.card": {
 		"type": "Timeline",
 		"header": {
-			"title": "Emmi Activities",
+			"title": "Recent Activities",
 			"subTitle": "See last submitted Activities"
 		},
 		"content": {
