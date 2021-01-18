@@ -21,10 +21,23 @@
       "authenticationType": "none"
     },
     {
-      "source": "^/wss$",
+      "source": "/wss$",
       "target": "/wss",
       "destination": "SRV_API_URL",
       "authenticationType": "none"
+    },
+    {
+      "source": "^/ui(.*)",
+      "target": "/comemmiletsmove/$1",
+      "authenticationType": "none",
+      "service": "html5-apps-repo-rt"
+    },
+    {
+      "source": "/srv_api/(.*)$",
+      "target": "$1",
+      "authenticationType": "none",
+      "destination": "SRV_API_URL",
+      "csrfProtection": false
     },
     {
       "source": "^(.*)$",

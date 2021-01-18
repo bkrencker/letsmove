@@ -41,6 +41,7 @@ modules:
       memory: 192M
     requires:
       - name: ui5_uaa
+      - name: ui5_html5_repo_runtime
       - name: srv_api
         group: destinations
         properties:

@@ -11,7 +11,7 @@
     "description": "{{appDescription}}",
     "dataSources": {
       "catalogService": {
-        "uri": "srv_api/catalog/",
+        "uri": "/srv_api/catalog/",
         "type": "OData",
         "settings": {
           "odataVersion": "4.0",
