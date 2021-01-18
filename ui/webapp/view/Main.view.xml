@@ -35,7 +35,7 @@
 								</VBox>
 								<VBox id="vBoxUnitSelection" width="25%">
 									<items>
-										<SegmentedButton id="segmentBtnUnit" width="100%" items="{/Units}" selectedKey="{ path: 'validation>/uom'}">
+										<SegmentedButton id="segmentBtnUnit" width="100%" items="{/Units}" selectedKey="{ path: 'validation>/uom_code'}" selectedButton="none">
                         <items>
                             <SegmentedButtonItem text="{title}" key="{code}" width="50px" />
                         </items>
@@ -48,7 +48,7 @@
 							<items>
 								<VBox id="vBoxActivity">
 									<items>
-                    <SegmentedButton  id="segmentBtnActivity" items="{/ActivityTypes}" width="100%" selectedKey="{ path: 'validation>/type'}">
+                    <SegmentedButton  id="segmentBtnActivity" items="{/ActivityTypes}" width="100%" selectedKey="{ path: 'validation>/type_code'}">
                         <items>
                             <SegmentedButtonItem key="{code}" icon="resources/img/icons/{code}.png" press="setNewIcon" />
                         </items>
@@ -69,7 +69,7 @@
                     <ComboBox id="comboCompany"
                       showSecondaryValues="true"
                       filterSecondaryValues= "true"
-                      value="{ path: 'validation>/company'}"
+                      selectedKey="{ path: 'validation>/company_code'}"
                       placeholder="Select Company"
                       items="{
                         path: '/CompaniesView',
@@ -79,7 +79,7 @@
                           group: true
                         }
                       }">
-                      <core:ListItem key="{CompanyCode}" text="{CompanyTitle}" additionalText="{CompanyCode}" />
+                      <core:ListItem key="{CompanyCode}" text="{CompanyTitle}" additionalText="{CompanyCode}"  />
                     </ComboBox>
 									</items>
 								</VBox>
@@ -87,7 +87,7 @@
 						</HBox>
 						<HBox id="hBoxSend" justifyContent="Center">
 							<items>
-								<Button id="btnSend" text="Senden" press="createActivity"/>
+								<Button id="btnSend" text="Senden" press="send"/>
 							</items>
 						</HBox>
 					</items>
