@@ -121,7 +121,7 @@ sap.ui.define([
               this.getView().byId("microBulletChart").setTargetValue(target);
               this.getView().byId("microBulletChart").setTargetValueLabel(target + " " + unit);
               this.getView().byId("microBulletChartActualData").setValue(total);
-              this.getView().byId("microBulletChart").setForecastValue((target + target));
+              this.getView().byId("microBulletChart").setForecastValue((target * 1.5));
               resolved(true);
             }
           }.bind(this));
