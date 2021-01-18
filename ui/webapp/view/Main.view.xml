@@ -1,4 +1,4 @@
- <mvc:View controllerName="com.emmi.letsmove.controller.Main"
+<mvc:View controllerName="com.emmi.letsmove.controller.Main"
   displayBlock="true"
   xmlns="sap.m"
   xmlns:core="sap.ui.core"
@@ -30,14 +30,15 @@
 							<items>
 								<VBox id="vBoxDistance" width="75%" class="sapUiSmallMarginEnd">
 									<items>
-										<Input id="inputDistance" placeholder="Enter distance" type="Number" required="true" 	value="{ path: 'validation>/distance'}"/>
+										<Input id="inputDistance" placeholder="Enter distance" type="Number" required="true" 	value="{ path: 'validation>/distance', type: 'sap.ui.model.type.Float', constraints: { minimum: 1, maximum: 1000 } }" valueLiveUpdate="true"/>
+
 									</items>
 								</VBox>
 								<VBox id="vBoxUnitSelection" width="25%">
 									<items>
-										<SegmentedButton id="segmentBtnUnit" width="100%" items="{/Units}" selectedKey="{ path: 'validation>/uom_code'}" selectedButton="none">
+										<SegmentedButton id="segmentBtnUnit" width="100%" items="{/Units}" selectedKey="{ path: 'validation>/uom_code'}">
                         <items>
-                            <SegmentedButtonItem text="{title}" key="{code}" width="50px" />
+                            <SegmentedButtonItem text="{title}" key="{code}"  />
                         </items>
                     </SegmentedButton>
 									</items>
@@ -61,7 +62,7 @@
 							<items>
 								<VBox width="100%" id="vBoxNickname" class="sapUiSmallMarginEnd">
 									<items>
-										<Input id="inputNickname" placeholder="Your nickname" value="{ path: 'validation>/nickname'}" type="Text" />
+										<Input id="inputNickname" placeholder="Your nickname" value="{ path: 'validation>/nickname', type: 'sap.ui.model.type.String', constraints: { minLength: 2, maxLength: 60 } }" valueLiveUpdate="true"/>
 									</items>
 								</VBox>
 								<VBox id="vBoxCompany" width="100%">
