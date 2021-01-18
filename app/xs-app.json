@@ -1,5 +1,5 @@
 {
-  "welcomeFile": "admin.html",
+  "welcomeFile": "/ui/index.html",
   "authenticationMethod": "route",
   "websockets": {
     "enabled": true

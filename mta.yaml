@@ -33,7 +33,7 @@ modules:
     requires:
       - name: letsmove-db
 
-  - name: admin
+  - name: app
     type: nodejs
     path: app
     parameters:
