@@ -23,6 +23,11 @@ entity Activities : cuid, managed {
   imageUrl: String @Core.Computed: true @UI.IsImageURL: true;
 }
 
+entity TargetActivities {
+  key unit: Association to one Units @title: 'Unit';
+  distance: Decimal(12, 2) @title: 'Distance';
+}
+
 entity Countries : managed {
   key code: String @title: 'Country';
   title: String @title: 'Country';

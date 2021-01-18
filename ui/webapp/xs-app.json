@@ -1,6 +1,9 @@
 {
   "welcomeFile": "/index.html",
   "authenticationMethod": "route",
+  "websockets": {
+    "enabled": true
+  },
   "routes": [
     {
       "source": "^/srv_api/(.*)$",
@@ -8,6 +11,12 @@
       "authenticationType": "none",
       "destination": "SRV_API_URL",
       "csrfProtection": false
+    },
+    {
+      "source": "^/wss$",
+      "target": "/wss",
+      "destination": "SRV_API_URL",
+      "authenticationType": "none"
     },
     {
       "source": "^(.*)",

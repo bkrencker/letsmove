@@ -76,22 +76,27 @@ service CatalogService {
       company.country.title;
 
 
-    view TotalActivity as select from Activities   {
+    view TotalActivity as select from Activities CROSS JOIN TargetActivities {
+
+
       round( sum(
         case
-          when uom.code = 'mi' then distance * 1.60934
+          when uom.code = 'mi' then Activities.distance * 1.60934
           else
-            distance
+            Activities.distance
         end
       ), 2) as totalKm: Decimal(10,2),
       round( sum(
         case
-          when uom.code = 'km' then distance * 0.62137
+          when uom.code = 'km' then Activities.distance * 0.62137
           else
-            distance
+            Activities.distance
         end
-      ), 2) as totalMi: Decimal(10,2)
-    };
+      ), 2) as totalMi: Decimal(10,2),
+      TargetActivities.distance as TargetActivitiesKm: Decimal(10,2),
+      round(TargetActivities.distance * 0.62137, 2) as TargetActivitiesMi: Decimal(10,2)
+
+    } group by TargetActivities.distance;
 
     view TotalByMonth as select from Activities {
       key ID,
@@ -156,4 +161,5 @@ service CatalogService {
     @readonly entity Companies as projection on letsmove.Companies;
     @readonly entity Units as projection on letsmove.Units;
     @readonly entity ActivityTypes as projection on letsmove.ActivityTypes;
+    @readonly entity TargetActivities as projection on letsmove.TargetActivities;
 }

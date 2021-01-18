@@ -1,6 +1,7 @@
 sap.ui.define([
-  "com/emmi/letsmove/controller/BaseController"
-], function (Controller) {
+  "com/emmi/letsmove/controller/BaseController",
+  "sap/ui/core/ws/WebSocket"
+], function (Controller, WebSocket) {
   "use strict";
 
   return Controller.extend("com.emmi.letsmove.controller.Main", {
@@ -24,7 +25,19 @@ sap.ui.define([
       });
       //Activate form validation
       sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
-      this.loadProgressBar();
+      this.updateBulletChart();
+
+
+      /**
+       * Create Websocket Connection for realtime updates
+       */
+      //var oWS = new WebSocket("wss://businessappstudio-workspaces-ws-dk5pr-app1.eu10.applicationstudio.cloud.sap/wss");
+      var oWS = new WebSocket("/wss");
+
+			oWS.attachMessage(function (oEvent) {
+				// update list
+        this.updateBulletChart();
+      }.bind(this));
     },
 
     onAfterRendering: function () {
@@ -75,13 +88,15 @@ sap.ui.define([
       }
     },
 
-    loadProgressBar: function () {
+    updateBulletChart: function () {
       //Load Totals
       var oListTotalActivity = this.getView().getModel().bindList("/TotalActivity");
       new Promise(function (resolved, rejected) {
         oListTotalActivity.requestContexts().then(function (aContexts) {
           aContexts.forEach(function (oContext) {
             var total = 0;
+            var target = 0;
+
             var unit = null;
             if (oContext.getObject().totalKm <= 0) {
               rejected();
@@ -92,19 +107,21 @@ sap.ui.define([
 
                 if (loc.includes("-US") || loc.includes("-GB") || loc.includes("-MM") || loc.includes("-LR")) {
                   total = Math.round(oContext.getObject().totalMi);
+                  target = Math.round(oContext.getObject().TargetActivitiesMi);
                   unit = 'mi';
                   break;
                 } else {
                   total = Math.round(oContext.getObject().totalKm);
+                  target = Math.round(oContext.getObject().TargetActivitiesKm);
                   unit = 'km';
                   break;
                 }
               }
               //Set SmartBullet Values
-              this.getView().byId("microBulletChart").setTargetValue(30000);
-              this.getView().byId("microBulletChart").setTargetValueLabel("30000 " + unit);
+              this.getView().byId("microBulletChart").setTargetValue(target);
+              this.getView().byId("microBulletChart").setTargetValueLabel(target + " " + unit);
               this.getView().byId("microBulletChartActualData").setValue(total);
-              this.getView().byId("microBulletChart").setForecastValue(40000);
+              this.getView().byId("microBulletChart").setForecastValue((target + target));
               resolved(true);
             }
           }.bind(this));
