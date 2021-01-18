@@ -19,7 +19,8 @@
   ],
   "oauth2-configuration": {
     "redirect-uris": [
-      "https://letsmove.apps.emmi.com/login/callback"
+      "https://letsmove.apps.emmi.com/login/callback",
+      "https://*.cfapps.eu10.hana.ondemand.com/login/callback"
     ]
   }
 }
