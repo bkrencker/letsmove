@@ -11,6 +11,20 @@ sap.ui.define([
 	return Controller.extend("letsmove.dashboard.Main", {
 
 		onInit: function () {
+      /**
+       * Dynamically load manifest path from resource root because when loading
+       * via Launchpad there is an other root folder than loading index.html
+       */
+      var sPath = jQuery.sap.getModulePath("letsmove.dashboard");
+      this.getView().byId("idTimelineCard").setManifest(sPath + "/timeline-card.json");
+      this.getView().byId("idDonutActivityCard").setManifest(sPath + "/donut-activitytype-km-card.json");
+      this.getView().byId("idDonutCompanyCard").setManifest(sPath + "/donut-company-km-card.json");
+      this.getView().byId("idDonutCountryCard").setManifest(sPath + "/donut-country-km-card.json");
+      this.getView().byId("idQRCodeCard").setManifest(sPath + "/qrcode/manifest.json");
+
+      /**
+       * Create Websocket Connection for realtime updates
+       */
       var oWS = new WebSocket("wss://businessappstudio-workspaces-ws-dk5pr-app1.eu10.applicationstudio.cloud.sap/wss");
 			oWS.attachMessage(function (oEvent) {
 				// update list

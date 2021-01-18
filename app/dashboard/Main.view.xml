@@ -33,31 +33,31 @@
           </w:Card>
           -->
 
-          <w:Card id="idTimelineCard" manifest="./timeline-card.json">
+          <w:Card id="idTimelineCard">
             <w:layoutData>
               <f:GridContainerItemLayoutData columns="3" />
             </w:layoutData>
           </w:Card>
 
-          <w:Card id="idDonutActivityCard" manifest="./donut-activitytype-km-card.json">
+          <w:Card id="idDonutActivityCard">
             <w:layoutData>
               <f:GridContainerItemLayoutData columns="3" />
             </w:layoutData>
           </w:Card>
 
-          <w:Card id="idDonutCompanyCard" manifest="./donut-company-km-card.json">
+          <w:Card id="idDonutCompanyCard">
             <w:layoutData>
               <f:GridContainerItemLayoutData columns="3" />
             </w:layoutData>
           </w:Card>
 
-          <w:Card id="idDonutCountryCard" manifest="./donut-country-km-card.json">
+          <w:Card id="idDonutCountryCard">
             <w:layoutData>
               <f:GridContainerItemLayoutData columns="3" />
             </w:layoutData>
           </w:Card>
 
-          <w:Card manifest="./qrcode/manifest.json">
+          <w:Card id="idQRCodeCard">
             <w:layoutData>
               <f:GridContainerItemLayoutData columns="3" />
             </w:layoutData>
