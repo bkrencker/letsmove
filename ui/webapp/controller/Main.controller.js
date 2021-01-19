@@ -27,6 +27,9 @@ sap.ui.define([
       sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
       this.updateBulletChart();
 
+      this.byId("segmentBtnActivity").attachSelect(function(oEvent) {
+        debugger;
+      });
 
       /**
        * Create Websocket Connection for realtime updates
@@ -40,10 +43,31 @@ sap.ui.define([
       }.bind(this));
     },
 
-    onAfterRendering: function () {
-
+    onRequest: function(){
     },
 
+    sleep: function (milliseconds) {
+      const date = Date.now();
+      let currentDate = null;
+      do {
+        currentDate = Date.now();
+      } while (currentDate - date < milliseconds);
+    },
+
+    onSegmentButtonChange: function(){
+      /*
+        Set white icon on SegmentButton first Load
+      */
+      var btns = this.getView().byId("segmentBtnActivity").getButtons();
+      this.sleep(100);
+      if (btns[0] !== undefined) {
+        var icon = btns[0].getIcon();
+        if (!icon.includes("_white.png")) {
+          icon = icon.replace(".png", "_white.png");
+          btns[0].setIcon(icon);
+        }
+      }
+    },
     send: function () {
       var formData = this.getModel("validation").getData();
       //Convert Float to string
@@ -51,6 +75,7 @@ sap.ui.define([
 
       this.createActivity(formData).then(function () {
         this.getModel("validation").setData({});
+        this.updateBulletChart();
       }.bind(this));
     },
 
@@ -121,7 +146,7 @@ sap.ui.define([
               this.getView().byId("microBulletChart").setTargetValue(target);
               this.getView().byId("microBulletChart").setTargetValueLabel(target + " " + unit);
               this.getView().byId("microBulletChartActualData").setValue(total);
-              this.getView().byId("microBulletChart").setForecastValue((target * 1.5));
+              this.getView().byId("microBulletChart").setForecastValue(total);
               resolved(true);
             }
           }.bind(this));

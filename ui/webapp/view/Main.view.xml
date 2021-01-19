@@ -30,7 +30,16 @@
 								</VBox>
 								<VBox id="vBoxUnitSelection" width="25%">
 									<items>
-										<SegmentedButton id="segmentBtnUnit" width="100%" items="{/Units}" selectedKey="{ path: 'validation>/uom_code'}">
+										<SegmentedButton id="segmentBtnUnit"
+                      width="100%"
+                      items="
+                      {
+                        path: '/Units',
+                        events: {
+                            change: '.onSegmentButtonChange'
+                        }
+                      }"
+                      selectedKey="{ path: 'validation>/uom_code'}">
                         <items>
                             <SegmentedButtonItem text="{title}" key="{code}"  />
                         </items>
