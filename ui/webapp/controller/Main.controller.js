@@ -73,6 +73,12 @@ sap.ui.define([
       this.createActivity(formData).then(function () {
         this.getModel("validation").setData({});
         this.updateBulletChart();
+        this.byId("inputDistance").setValueState(sap.ui.core.ValueState.None);
+        this.byId("inputNickname").setValueState(sap.ui.core.ValueState.None);
+        this.byId("comboCompany").setValueState(sap.ui.core.ValueState.None);
+        this.byId("segmentBtnActivity").setSelectedKey("bike");
+        this.byId("segmentBtnUnit").setSelectedKey("km");
+        this.byId("btnSend").setType(sap.m.ButtonType.Default);
       }.bind(this));
     },
 
