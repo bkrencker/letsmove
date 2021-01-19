@@ -24,7 +24,8 @@
 							<items>
 								<VBox id="vBoxDistance" width="75%" class="sapUiSmallMarginEnd">
 									<items>
-										<Input id="inputDistance" placeholder="Enter distance" type="Number" required="true" 	value="{ path: 'validation>/distance', type: 'sap.ui.model.type.Float', constraints: { minimum: 1, maximum: 1000 } }" valueLiveUpdate="true"/>
+										<Input id="inputDistance" placeholder="Enter distance" validationError="validationError"
+                      validationSuccess="validationSucess" liveChange="checkIfFieldNotEmpty" type="Number" required="true" 	value="{ path: 'validation>/distance', type: 'sap.ui.model.type.Float', constraints: { minimum: 1, maximum: 1000 } }" valueLiveUpdate="true"/>
 
 									</items>
 								</VBox>
@@ -64,7 +65,7 @@
 							<items>
 								<VBox width="100%" id="vBoxNickname" class="sapUiSmallMarginEnd">
 									<items>
-										<Input id="inputNickname" placeholder="Your nickname" value="{ path: 'validation>/nickname', type: 'sap.ui.model.type.String', constraints: { minLength: 2, maxLength: 60 } }" valueLiveUpdate="true"/>
+										<Input id="inputNickname" placeholder="Your nickname" liveChange="checkIfFieldNotEmpty" validationError="validationError" validationSuccess="validationSucess" value="{ path: 'validation>/nickname', type: 'sap.ui.model.type.String', constraints: { minLength: 2, maxLength: 60 } }" valueLiveUpdate="true"/>
 									</items>
 								</VBox>
 								<VBox id="vBoxCompany" width="100%">
@@ -73,6 +74,10 @@
                       showSecondaryValues="true"
                       filterSecondaryValues= "true"
                       selectedKey="{ path: 'validation>/company_code'}"
+                      selectionChange="companyValidation"
+                      valueStateText="Selection not valid"
+                      validationError="validationError"
+                      validationSuccess="validationSucess"
                       placeholder="Select Company"
                       items="{
                         path: '/CompaniesView',
@@ -90,7 +95,7 @@
 						</HBox>
 						<HBox id="hBoxSend" justifyContent="Center">
 							<items>
-								<Button id="btnSend" text="Senden" press="send"/>
+								<Button id="btnSend" text="Senden" enabled="false" press="send"/>
 							</items>
 						</HBox>
 					</items>

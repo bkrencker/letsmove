@@ -43,9 +43,6 @@ sap.ui.define([
       }.bind(this));
     },
 
-    onRequest: function(){
-    },
-
     sleep: function (milliseconds) {
       const date = Date.now();
       let currentDate = null;
@@ -59,7 +56,7 @@ sap.ui.define([
         Set white icon on SegmentButton first Load
       */
       var btns = this.getView().byId("segmentBtnActivity").getButtons();
-      this.sleep(100);
+      this.sleep(200);
       if (btns[0] !== undefined) {
         var icon = btns[0].getIcon();
         if (!icon.includes("_white.png")) {
@@ -90,6 +87,52 @@ sap.ui.define([
       }.bind(this));
 
       return promise;
+    },
+    checkIfFieldNotEmpty: function (oEvent) {
+      if (oEvent.getSource().getValue() == "") {
+        oEvent.getSource().setValueState("Error");
+        this.setButtonSendEnabled(false);
+      }
+    },
+    companyValidation: function (oEvent) {
+      if (oEvent.getSource().getSelectedKey() == "" || oEvent.getSource().getSelectedKey() == null || oEvent.getSource().getSelectedKey() == null) {
+        oEvent.getSource().setValueState("Error");
+        this.setButtonSendEnabled(false);
+      } else {
+        oEvent.getSource().setValueState("Success");
+        this.validationSucess(oEvent);
+      }
+    },
+
+    validationSucess: function (oEvent) {
+      oEvent.getSource().setValueState("Success");
+      if (this.allFieldsFilled() == true) {
+        this.setButtonSendEnabled(true);
+      } else {
+        this.setButtonSendEnabled(false);
+      }
+    },
+    allFieldsFilled: function () {
+      var inputNickname = this.byId("inputNickname");
+      var inputDistance = this.byId("inputDistance");
+      var comboCompany = this.byId("comboCompany");
+      if (inputNickname.getValue() !== "" && inputDistance.getValue() !== "" && comboCompany.getSelectedKey() !== "") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    validationError: function () {
+      this.setButtonSendEnabled(false);
+    },
+
+    setButtonSendEnabled: function (bool) {
+      this.byId("btnSend").setEnabled(bool);
+      if (bool === true) {
+        this.byId("btnSend").setType(sap.m.ButtonType.Accept);
+      } else {
+         this.byId("btnSend").setType(sap.m.ButtonType.Reject);
+      }
     },
 
     setNewIcon: function (oEvent) {
