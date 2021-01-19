@@ -24,9 +24,7 @@
 							<items>
 								<VBox id="vBoxDistance" width="75%" class="sapUiSmallMarginEnd">
 									<items>
-										<Input id="inputDistance" placeholder="Enter distance" validationError="validationError"
-                      validationSuccess="validationSucess" liveChange="checkIfFieldNotEmpty" type="Number" required="true" 	value="{ path: 'validation>/distance', type: 'sap.ui.model.type.Float', constraints: { minimum: 1, maximum: 1000 } }" valueLiveUpdate="true"/>
-
+										<Input id="inputDistance" placeholder="Enter distance" validationError="validationError" validationSuccess="validationSucess" liveChange="checkIfFieldNotEmpty" type="Number" required="true" 	value="{ path: 'validation>/distance', type: 'sap.ui.model.type.Float', constraints: { minimum: 1, maximum: 1000 } }" valueLiveUpdate="true"/>
 									</items>
 								</VBox>
 								<VBox id="vBoxUnitSelection" width="25%">
@@ -41,7 +39,7 @@
                       }"
                       selectedKey="{ path: 'validation>/uom_code'}">
                         <items>
-                            <SegmentedButtonItem text="{title}" key="{code}"  />
+                            <SegmentedButtonItem id="unitButtonItem" text="{title}" key="{code}"  />
                         </items>
                     </SegmentedButton>
 									</items>
@@ -54,7 +52,7 @@
 									<items>
                     <SegmentedButton  id="segmentBtnActivity" items="{/ActivityTypes}" width="100%" selectedKey="{ path: 'validation>/type_code'}">
                         <items>
-                            <SegmentedButtonItem key="{code}" icon="resources/img/icons/{code}.png" press="setNewIcon" />
+                            <SegmentedButtonItem id="activityButtonItem" key="{code}" icon="resources/img/icons/{code}.png" press="setNewIcon" />
                         </items>
                     </SegmentedButton>
 									</items>
@@ -87,7 +85,7 @@
                           group: true
                         }
                       }">
-                      <core:ListItem key="{CompanyCode}" text="{CompanyTitle}" additionalText="{CompanyCode}"  />
+                      <core:ListItem id="companyListItem" key="{CompanyCode}" text="{CompanyTitle}" additionalText="{CompanyCode}"  />
                     </ComboBox>
 									</items>
 								</VBox>

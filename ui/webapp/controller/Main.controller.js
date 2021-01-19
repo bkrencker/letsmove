@@ -1,11 +1,11 @@
 sap.ui.define([
-  "com/emmi/letsmove/controller/BaseController",
-  "sap/ui/core/ws/WebSocket"
-], function (Controller, WebSocket) {
+  "com/emmi/letsmove/controller/BaseController"
+], function (Controller) {
   "use strict";
 
   return Controller.extend("com.emmi.letsmove.controller.Main", {
     onInit: function () {
+      // eslint-disable-next-line no-undef
       $("#splashScreen").remove();
 
       // Get Random number between 1 and 11
@@ -15,6 +15,9 @@ sap.ui.define([
 
       var oModel = new sap.ui.model.json.JSONModel();
 
+      /*
+        Initialize form Data for validation
+      */
       this.getView().setModel(oModel, "validation");
       this.getModel("validation").setData({
         type_code: null,
@@ -27,13 +30,9 @@ sap.ui.define([
       sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
       this.updateBulletChart();
 
-      this.byId("segmentBtnActivity").attachSelect(function(oEvent) {
-        debugger;
-      });
-
       /**
        * Create Websocket Connection for realtime updates
-       */
+
       //var oWS = new WebSocket("wss://businessappstudio-workspaces-ws-dk5pr-app1.eu10.applicationstudio.cloud.sap/wss");
       var oWS = new WebSocket("/wss");
 
@@ -41,6 +40,7 @@ sap.ui.define([
 				// update list
         this.updateBulletChart();
       }.bind(this));
+       */
     },
 
     sleep: function (milliseconds) {
@@ -70,9 +70,13 @@ sap.ui.define([
       //Convert Float to string
       formData.distance = formData.distance.toString();
 
+      //Create Activity Entry
       this.createActivity(formData).then(function () {
         this.getModel("validation").setData({});
         this.updateBulletChart();
+        /*
+          Reset form after submit
+        */
         this.byId("inputDistance").setValueState(sap.ui.core.ValueState.None);
         this.byId("inputNickname").setValueState(sap.ui.core.ValueState.None);
         this.byId("comboCompany").setValueState(sap.ui.core.ValueState.None);
@@ -182,12 +186,12 @@ sap.ui.define([
                 if (loc.includes("-US") || loc.includes("-GB") || loc.includes("-MM") || loc.includes("-LR")) {
                   total = Math.round(oContext.getObject().totalMi);
                   target = Math.round(oContext.getObject().TargetActivitiesMi);
-                  unit = 'mi';
+                  unit = "mi";
                   break;
                 } else {
                   total = Math.round(oContext.getObject().totalKm);
                   target = Math.round(oContext.getObject().TargetActivitiesKm);
-                  unit = 'km';
+                  unit = "km";
                   break;
                 }
               }
