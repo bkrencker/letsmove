@@ -161,7 +161,11 @@ sap.ui.define([
         }
       }
     },
-    updateBulletChart: function () {
+
+    segmentUnitChanged: function (oEvent) {
+      this.updateBulletChart(oEvent.getSource().getSelectedKey());
+    },
+    updateBulletChart: function (unit) {
       //Load Totals
       var oListTotalActivity = this.getView().getModel().bindList("/TotalActivity");
       new Promise(function (resolved, rejected) {
@@ -170,19 +174,21 @@ sap.ui.define([
             var total = 0;
             var target = 0;
 
-            var unit = null;
+            //var unit = null;
             if (oContext.getObject().totalKm <= 0) {
               rejected();
             } else {
               //Use Miles when browser has one of the specified Locales
+              if (unit == null) {
                 unit = this.getUnitFromLocale();
-                if (unit == "mi") {
-                  total = Math.round(oContext.getObject().totalMi);
-                  target = Math.round(oContext.getObject().TargetActivitiesMi);
-                } else {
-                  total = Math.round(oContext.getObject().totalKm);
-                  target = Math.round(oContext.getObject().TargetActivitiesKm);
-                }
+              }
+              if (unit == "mi") {
+                total = Math.round(oContext.getObject().totalMi);
+                target = Math.round(oContext.getObject().TargetActivitiesMi);
+              } else {
+                total = Math.round(oContext.getObject().totalKm);
+                target = Math.round(oContext.getObject().TargetActivitiesKm);
+              }
               //Set SmartBullet Values
               this.getView().byId("microBulletChart").setTargetValue(target);
               this.getView().byId("microBulletChart").setTargetValueLabel(target + " " + unit);

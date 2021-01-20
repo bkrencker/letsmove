@@ -31,10 +31,10 @@
 									<items>
 										<SegmentedButton id="segmentBtnUnit"
                       width="100%"
-                      items="{
-                        path: '/Units'
-                      }"
-                      selectedKey="{ path: 'validation>/uom_code'}">
+                      items="{/Units}"
+                      selectedKey="{ path: 'validation>/uom_code'}"
+                      selectionChange="segmentUnitChanged">
+
                         <items>
                             <SegmentedButtonItem id="unitButtonItem" text="{title}" key="{code}"  />
                         </items>
