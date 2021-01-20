@@ -152,14 +152,16 @@ sap.ui.define([
       }
     },
     getUnitFromLocale: function () {
+      var unit = null;
       for (var i in navigator.languages) {
         var loc = navigator.languages[i];
         if (loc.includes("-US") || loc.includes("-GB") || loc.includes("-MM") || loc.includes("-LR")) {
-          return "mi";
+          unit = "mi";
         } else {
-          return "km";
+          unit = "km";
         }
       }
+      return unit;
     },
 
     segmentUnitChanged: function (oEvent) {

@@ -43,13 +43,13 @@
 								</VBox>
 							</items>
 						</HBox>
-						<HBox id="hBoxActivity" width="100%" class="sapUiSmallMarginTop">
+						<HBox id="hBoxActivity" width="100%" class="sapUiSmallMarginTop" alignItems="Center" justifyContent="Center">
 							<items>
 								<VBox id="vBoxActivity">
 									<items>
                     <SegmentedButton  id="segmentBtnActivity" items="{/ActivityTypes}" width="100%" selectedKey="{ path: 'validation>/type_code'}">
                         <items>
-                            <SegmentedButtonItem id="activityButtonItem" key="{code}" icon="{parts: [ 'validation>/type_code', 'code'] , formatter: '.formatter.setIcon'}"  />
+                            <SegmentedButtonItem id="activityButtonItem" width="66px" key="{code}" icon="{parts: [ 'validation>/type_code', 'code'] , formatter: '.formatter.setIcon'}"  />
                         </items>
                     </SegmentedButton>
 									</items>
