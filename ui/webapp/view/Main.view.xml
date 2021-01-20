@@ -55,7 +55,7 @@
                         }
                         }" width="100%" selectedKey="{ path: 'validation>/type_code'}">
                         <items>
-                            <SegmentedButtonItem id="activityButtonItem" width="66px" key="{code}" icon="{parts: [ 'validation>/type_code', 'code'] , formatter: '.formatter.setIcon'}"  />
+                            <SegmentedButtonItem id="activityButtonItem" key="{code}" icon="{parts: [ 'validation>/type_code', 'code'] , formatter: '.formatter.setIcon'}"  />
                         </items>
                     </SegmentedButton>
 									</items>
@@ -96,7 +96,7 @@
 						</HBox>
 						<HBox id="hBoxSend" justifyContent="Center">
 							<items>
-								<Button id="btnSend" text="Senden" enabled="false" press="send"/>
+								<Button id="btnSend" icon="sap-icon://paper-plane" width="70px" enabled="false" press="send"/>
 							</items>
 						</HBox>
 					</items>
