@@ -22,7 +22,7 @@ sap.ui.define([
       this.getModel("validation").setData({
         type_code: 'bike',
         distance: null,
-        uom_code: null,
+        uom_code: this.getUnitFromLocale(),
         nickname: null,
         company_code: null
       });
@@ -67,7 +67,7 @@ sap.ui.define([
         this.byId("inputNickname").setValueState(sap.ui.core.ValueState.None);
         this.byId("comboCompany").setValueState(sap.ui.core.ValueState.None);
         this.byId("segmentBtnActivity").setSelectedKey("bike");
-        this.byId("segmentBtnUnit").setSelectedKey("km");
+        this.byId("segmentBtnUnit").setSelectedKey(this.getUnitFromLocale());
         this.byId("btnSend").setType(sap.m.ButtonType.Default);
       }.bind(this));
     },
@@ -127,7 +127,7 @@ sap.ui.define([
       if (bool === true) {
         this.byId("btnSend").setType(sap.m.ButtonType.Accept);
       } else {
-         this.byId("btnSend").setType(sap.m.ButtonType.Reject);
+        this.byId("btnSend").setType(sap.m.ButtonType.Reject);
       }
     },
 
@@ -151,7 +151,16 @@ sap.ui.define([
         }
       }
     },
-
+    getUnitFromLocale: function () {
+      for (var i in navigator.languages) {
+        var loc = navigator.languages[i];
+        if (loc.includes("-US") || loc.includes("-GB") || loc.includes("-MM") || loc.includes("-LR")) {
+          return "mi";
+        } else {
+          return "km";
+        }
+      }
+    },
     updateBulletChart: function () {
       //Load Totals
       var oListTotalActivity = this.getView().getModel().bindList("/TotalActivity");
@@ -166,21 +175,14 @@ sap.ui.define([
               rejected();
             } else {
               //Use Miles when browser has one of the specified Locales
-              for (var i in navigator.languages) {
-                var loc = navigator.languages[i];
-
-                if (loc.includes("-US") || loc.includes("-GB") || loc.includes("-MM") || loc.includes("-LR")) {
+                unit = this.getUnitFromLocale();
+                if (unit == "mi") {
                   total = Math.round(oContext.getObject().totalMi);
                   target = Math.round(oContext.getObject().TargetActivitiesMi);
-                  unit = "mi";
-                  break;
                 } else {
                   total = Math.round(oContext.getObject().totalKm);
                   target = Math.round(oContext.getObject().TargetActivitiesKm);
-                  unit = "km";
-                  break;
                 }
-              }
               //Set SmartBullet Values
               this.getView().byId("microBulletChart").setTargetValue(target);
               this.getView().byId("microBulletChart").setTargetValueLabel(target + " " + unit);
