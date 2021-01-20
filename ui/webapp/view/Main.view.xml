@@ -52,7 +52,7 @@
 									<items>
                     <SegmentedButton  id="segmentBtnActivity" items="{/ActivityTypes}" width="100%" selectedKey="{ path: 'validation>/type_code'}">
                         <items>
-                            <SegmentedButtonItem id="activityButtonItem" key="{code}" icon="resources/img/icons/{code}.png" press="setNewIcon" />
+                            <SegmentedButtonItem id="activityButtonItem" key="{code}" icon="{parts: [ 'validation>/type_code', 'code'] , formatter: '.formatter.setIcon'}"  />
                         </items>
                     </SegmentedButton>
 									</items>
