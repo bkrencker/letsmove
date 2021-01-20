@@ -69,7 +69,9 @@ sap.ui.define([
       var formData = this.getModel("validation").getData();
       //Convert Float to string
       formData.distance = formData.distance.toString();
-
+      if (formData.type_code == null) {
+        formData.type_code = "bike";
+      }
       //Create Activity Entry
       this.createActivity(formData).then(function () {
         this.getModel("validation").setData({});
