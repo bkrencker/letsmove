@@ -14,6 +14,7 @@ sap.ui.define([
       this.byId("idAppControl").setBackgroundImage("resources/img/img_" + rand + ".jpg");
 
       var oModel = new sap.ui.model.json.JSONModel();
+      var oViewModel = new sap.ui.model.json.JSONModel();
 
       /*
         Initialize form Data for validation
@@ -25,6 +26,11 @@ sap.ui.define([
         uom_code: this.getUnitFromLocale(),
         nickname: null,
         company_code: null
+      });
+
+      this.getView().setModel(oViewModel, "viewModel");
+      this.getModel("viewModel").setData({
+        shapeAnimationValue: 0
       });
       //Activate form validation
       sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
@@ -69,6 +75,12 @@ sap.ui.define([
         this.byId("segmentBtnActivity").setSelectedKey("bike");
         this.byId("segmentBtnUnit").setSelectedKey(this.getUnitFromLocale());
         this.byId("btnSend").setType(sap.m.ButtonType.Default);
+        var vBoxConfirmation = this.byId("vBoxConfirmation");
+        vBoxConfirmation.setVisible(true);
+        this.startAnimationCounter();
+        setTimeout(function () {
+          vBoxConfirmation.setVisible(false);
+        }, 20000);
       }.bind(this));
     },
 
@@ -167,6 +179,14 @@ sap.ui.define([
     segmentUnitChanged: function (oEvent) {
       this.updateBulletChart(oEvent.getSource().getSelectedKey());
     },
+
+    startAnimationCounter: function () {
+      var oModel = this.getModel("viewModel");
+      for (var i = 0; i <= 100; i++) {
+        oModel.setProperty("/shapeAnimationValue", i);
+      }
+    },
+
     updateBulletChart: function (unit) {
       //Load Totals
       var oListTotalActivity = this.getView().getModel().bindList("/TotalActivity");
