@@ -51,6 +51,21 @@ sap.ui.define([
       } while (currentDate - date < milliseconds);
     },
 
+    onSegmentButtonChange: function(){
+      /*
+        Set white icon on SegmentButton first Load
+      */
+      var btns = this.getView().byId("segmentBtnActivity").getButtons();
+      this.sleep(200);
+      if (btns[0] !== undefined) {
+        var icon = btns[0].getIcon();
+        if (!icon.includes("_white.png")) {
+          icon = icon.replace(".png", "_white.png");
+          btns[0].setIcon(icon);
+        }
+      }
+    },
+
     send: function () {
       var formData = this.getModel("validation").getData();
       //Convert Float to string
