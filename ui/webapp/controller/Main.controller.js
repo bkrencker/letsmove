@@ -20,7 +20,7 @@ sap.ui.define([
       */
       this.getView().setModel(oModel, "validation");
       this.getModel("validation").setData({
-        type_code: 'bike',
+        type_code: 'walk',
         distance: null,
         uom_code: this.getUnitFromLocale(),
         nickname: null,

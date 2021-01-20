@@ -1,7 +1,7 @@
-CODE;TITLE
-run;Running
-walk;Walking
-bike;Biking
-swim;Swimming
-skate;Skating
-other;Other
+CODE;SORTER;TITLE
+walk;1;Walking
+run;2;Running
+bike;3;Biking
+swim;4;Swimming
+skate;5;Skating
+other;6;Other

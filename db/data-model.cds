@@ -4,6 +4,7 @@ using { managed, cuid } from '@sap/cds/common';
 
 entity ActivityTypes : managed {
   key code: String;
+  sorter: Integer;
   title: String @title: 'Activity';
 }
 
