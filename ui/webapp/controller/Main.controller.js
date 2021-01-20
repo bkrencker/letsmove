@@ -20,7 +20,7 @@ sap.ui.define([
       */
       this.getView().setModel(oModel, "validation");
       this.getModel("validation").setData({
-        type_code: null,
+        type_code: 'bike',
         distance: null,
         uom_code: null,
         nickname: null,
@@ -51,28 +51,11 @@ sap.ui.define([
       } while (currentDate - date < milliseconds);
     },
 
-    onSegmentButtonChange: function(){
-      /*
-        Set white icon on SegmentButton first Load
-      */
-      var btns = this.getView().byId("segmentBtnActivity").getButtons();
-      this.sleep(200);
-      if (btns[0] !== undefined) {
-        var icon = btns[0].getIcon();
-        if (!icon.includes("_white.png")) {
-          icon = icon.replace(".png", "_white.png");
-          btns[0].setIcon(icon);
-        }
-      }
-    },
-
     send: function () {
       var formData = this.getModel("validation").getData();
       //Convert Float to string
       formData.distance = formData.distance.toString();
-      if (formData.type_code == null) {
-        formData.type_code = "bike";
-      }
+
       //Create Activity Entry
       this.createActivity(formData).then(function () {
         this.getModel("validation").setData({});

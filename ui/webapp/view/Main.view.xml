@@ -32,10 +32,7 @@
 										<SegmentedButton id="segmentBtnUnit"
                       width="100%"
                       items="{
-                        path: '/Units',
-                        events: {
-                            change: '.onSegmentButtonChange'
-                        }
+                        path: '/Units'
                       }"
                       selectedKey="{ path: 'validation>/uom_code'}">
                         <items>
