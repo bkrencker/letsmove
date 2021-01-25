@@ -1,6 +1,7 @@
 sap.ui.define([
-  "com/emmi/letsmove/controller/BaseController"
-], function (Controller) {
+  "com/emmi/letsmove/controller/BaseController",
+  "sap/ui/core/format/NumberFormat"
+], function (Controller, NumberFormat) {
   "use strict";
 
   return Controller.extend("com.emmi.letsmove.controller.Main", {
@@ -212,8 +213,16 @@ sap.ui.define([
                 target = Math.round(oContext.getObject().TargetActivitiesKm);
               }
               //Set SmartBullet Values
+
+              //Add thousand separator according to locale
+              var oFloatNumberFormat = NumberFormat.getFloatInstance({
+                    groupingEnabled: true
+                } , sap.ui.getCore().getConfiguration().getLocale());
+              var targetFormated = target;
+              targetFormated = oFloatNumberFormat.format(test);
+
               this.getView().byId("microBulletChart").setTargetValue(target);
-              this.getView().byId("microBulletChart").setTargetValueLabel(target + " " + unit);
+              this.getView().byId("microBulletChart").setTargetValueLabel(targetFormated + " " + unit);
               this.getView().byId("microBulletChartActualData").setValue(total);
               this.getView().byId("microBulletChart").setForecastValue(total);
               resolved(true);
