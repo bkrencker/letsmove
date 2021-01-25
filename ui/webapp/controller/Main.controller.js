@@ -219,7 +219,7 @@ sap.ui.define([
                     groupingEnabled: true
                 } , sap.ui.getCore().getConfiguration().getLocale());
               var targetFormated = target;
-              targetFormated = oFloatNumberFormat.format(test);
+              targetFormated = oFloatNumberFormat.format(targetFormated);
 
               this.getView().byId("microBulletChart").setTargetValue(target);
               this.getView().byId("microBulletChart").setTargetValueLabel(targetFormated + " " + unit);
