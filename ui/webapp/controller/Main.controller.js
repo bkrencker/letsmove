@@ -77,10 +77,16 @@ sap.ui.define([
         this.byId("segmentBtnUnit").setSelectedKey(this.getUnitFromLocale());
         this.byId("btnSend").setType(sap.m.ButtonType.Default);
         var vBoxConfirmation = this.byId("vBoxConfirmation");
+        var vBoxForm = this.byId("vBoxForm");
+
+        vBoxForm.setVisible(false);
         vBoxConfirmation.setVisible(true);
+
         this.startAnimationCounter();
+
         setTimeout(function () {
           vBoxConfirmation.setVisible(false);
+          vBoxForm.setVisible(true);
         }, 20000);
       }.bind(this));
     },
@@ -166,13 +172,11 @@ sap.ui.define([
     },
     getUnitFromLocale: function () {
       var unit = null;
-      for (var i in navigator.languages) {
-        var loc = navigator.languages[i];
-        if (loc.includes("-US") || loc.includes("-GB") || loc.includes("-MM") || loc.includes("-LR")) {
-          unit = "mi";
-        } else {
-          unit = "km";
-        }
+      var loc = this.getView().getModel("i18n").getResourceBundle().sLocale;
+      if (loc.includes("_US") || loc.includes("_GB") || loc.includes("_MM") || loc.includes("_LR")) {
+        unit = "mi";
+      } else {
+        unit = "km";
       }
       return unit;
     },

@@ -35,6 +35,9 @@
               </si:ShapeGroup>
             </si:StatusIndicator>
           </HBox>
+          <HBox id="hBoxConfirmationText">
+            <Text id="textConfirmation" text="Thankyou for your participation!" />
+          </HBox>
           </items>
         </VBox>
 				<VBox id="vBoxForm">
@@ -53,7 +56,6 @@
                       items="{/Units}"
                       selectedKey="{ path: 'validation>/uom_code'}"
                       selectionChange="segmentUnitChanged">
-
                         <items>
                             <SegmentedButtonItem id="unitButtonItem" text="{title}" key="{code}"  />
                         </items>
