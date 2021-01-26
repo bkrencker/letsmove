@@ -221,6 +221,8 @@ sap.ui.define([
               var targetFormated = target;
               targetFormated = oFloatNumberFormat.format(targetFormated);
 
+              this.getView().byId("microBulletChartThresholdStart").setValue(0);
+              this.getView().byId("microBulletChartThresholdEnd").setValue(target * 2);
               this.getView().byId("microBulletChart").setTargetValue(target);
               this.getView().byId("microBulletChart").setTargetValueLabel(targetFormated + " " + unit);
               this.getView().byId("microBulletChartActualData").setValue(total);

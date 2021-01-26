@@ -8,7 +8,7 @@
   <App id="idAppControl" >
     <Page id="page" showHeader="false" class="transparent-bg">
 		<FlexBox id="flexBoxContent" alignItems="Center" justifyContent="Center" class="sapUiSmallMargin">
-			<Panel id="formPanel" class="panel">
+			<Panel id="formPanel" class="panel" width="22rem">
         <FlexBox id="flexBoxLogo" alignItems="Center" justifyContent="Center">
 					<Image id="imgLogo" src="resources/img/emmi_logo.png" width="200px" class="sapUiMediumMarginTopBottom" press="reload"/>
 				</FlexBox>
@@ -17,6 +17,10 @@
           <smart:actual>
             <smart:BulletMicroChartData id="microBulletChartActualData" color="Good"></smart:BulletMicroChartData>
           </smart:actual>
+          <smart:thresholds>
+          <smart:BulletMicroChartData id="microBulletChartThresholdStart" color="Good"/>
+          <smart:BulletMicroChartData id="microBulletChartThresholdEnd" color="Good"/>
+        </smart:thresholds>
         </smart:BulletMicroChart>
         </FlexBox>
         <VBox id="vBoxConfirmation" alignItems="Center" justifyContent="Center" width="100%" visible="false">
@@ -37,12 +41,12 @@
 					<items>
 						<HBox id="hBoxDistnace">
 							<items>
-								<VBox id="vBoxDistance" width="75%" class="sapUiSmallMarginEnd">
+								<VBox id="vBoxDistance" width="100%" class="sapUiSmallMarginEnd">
 									<items>
 										<Input id="inputDistance" placeholder="Enter distance" validationError="validationError" validationSuccess="validationSucess" liveChange="checkIfFieldNotEmpty" type="Number" required="true" 	value="{ path: 'validation>/distance', type: 'sap.ui.model.type.Float', constraints: { minimum: 1, maximum: 1000 } }" valueLiveUpdate="true"/>
 									</items>
 								</VBox>
-								<VBox id="vBoxUnitSelection" width="25%">
+								<VBox id="vBoxUnitSelection" width="100%">
 									<items>
 										<SegmentedButton id="segmentBtnUnit"
                       width="100%"
@@ -70,7 +74,7 @@
                         }
                         }" width="100%" selectedKey="{ path: 'validation>/type_code'}">
                         <items>
-                            <SegmentedButtonItem id="activityButtonItem" key="{code}" icon="{parts: [ 'validation>/type_code', 'code'] , formatter: '.formatter.setIcon'}"  />
+                            <SegmentedButtonItem id="activityButtonItem" key="{code}" width="3.333rem" tooltip="{title}" icon="{parts: [ 'validation>/type_code', 'code'] , formatter: '.formatter.setIcon'}"  />
                         </items>
                     </SegmentedButton>
 									</items>
@@ -81,7 +85,7 @@
 							<items>
 								<VBox width="100%" id="vBoxNickname" class="sapUiSmallMarginEnd">
 									<items>
-										<Input id="inputNickname" placeholder="Your nickname" liveChange="checkIfFieldNotEmpty" validationError="validationError" validationSuccess="validationSucess" value="{ path: 'validation>/nickname', type: 'sap.ui.model.type.String', constraints: { minLength: 2, maxLength: 60 } }" valueLiveUpdate="true"/>
+										<Input id="inputNickname" width="100%" placeholder="Your nickname" liveChange="checkIfFieldNotEmpty" validationError="validationError" validationSuccess="validationSucess" value="{ path: 'validation>/nickname', type: 'sap.ui.model.type.String', constraints: { minLength: 2, maxLength: 60 } }" valueLiveUpdate="true"/>
 									</items>
 								</VBox>
 								<VBox id="vBoxCompany" width="100%">
