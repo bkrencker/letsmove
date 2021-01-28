@@ -127,3 +127,5 @@ resources:
       path: ./xs-security.json
       service-plan: application
       service: xsuaa
+      config:
+        xsappname: 'letsmove-${space}'
