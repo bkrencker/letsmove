@@ -60,7 +60,7 @@
           "value": "{nickname}"
         },
 				"ownerImage": {
-          "value": "/{imageUrl}"
+          "value": "{imageModel>/path}/{imageUrl}"
         },
         "icon": {
           "src": "sap-icon://appointment-2"

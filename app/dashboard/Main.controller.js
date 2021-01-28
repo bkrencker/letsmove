@@ -6,7 +6,7 @@ sap.ui.define([
 	], function(Controller, MessageToast, Host, WebSocket) {
 	"use strict";
 
-	var aMobileCards = [];
+	//var aMobileCards = [];
 
 	return Controller.extend("letsmove.dashboard.Main", {
 
@@ -16,6 +16,10 @@ sap.ui.define([
        * via Launchpad there is an other root folder than loading index.html
        */
       var sPath = jQuery.sap.getModulePath("letsmove.dashboard");
+
+      var oImageModel = new sap.ui.model.json.JSONModel({ path: sPath });
+      this.getView().setModel(oImageModel, "imageModel");
+
       this.getView().byId("idTimelineCard").setManifest(sPath + "/timeline-card.json");
       this.getView().byId("idDonutActivityCard").setManifest(sPath + "/donut-activitytype-km-card.json");
       this.getView().byId("idDonutCompanyCard").setManifest(sPath + "/donut-company-km-card.json");
