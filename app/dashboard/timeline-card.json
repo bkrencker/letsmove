@@ -37,7 +37,7 @@
         "request": {
           "mode": "cors",
           "method": "GET",
-          "url": "/admin/Activities",
+          "url": "/catalog/RecentActivities",
           "parameters": {
             "$expand": "type,uom,company",
             "$orderby": "createdAt desc",

@@ -7,9 +7,11 @@ annotate CatalogService.Activities {
 
 
 service CatalogService {
-    entity Activities as projection on letsmove.Activities;
+    @insertonly entity Activities as projection on letsmove.Activities;
 
-    view TotalByActivityType as select from Activities {
+    @readonly view RecentActivities as select from letsmove.Activities { * } order by createdAt desc limit 10;
+
+    @readonly view TotalByActivityType as select from letsmove.Activities {
       type.code,
       type.title,
       round( sum(
@@ -31,7 +33,7 @@ service CatalogService {
       type.code,
       type.title;
 
-    view TotalByCompany as select from Activities {
+    @readonly view TotalByCompany as select from letsmove.Activities {
       company.code,
       company.title,
       round( sum(
@@ -53,7 +55,7 @@ service CatalogService {
       company.code,
       company.title;
 
-    view TotalByCountry as select from Activities {
+    @readonly view TotalByCountry as select from letsmove.Activities {
       company.country.code,
       company.country.title,
       round( sum(
@@ -76,9 +78,7 @@ service CatalogService {
       company.country.title;
 
 
-    view TotalActivity as select from Activities CROSS JOIN TargetActivities {
-
-
+    @readonly view TotalActivity as select from letsmove.Activities CROSS JOIN TargetActivities {
       round( sum(
         case
           when uom.code = 'mi' then Activities.distance * 1.60934
@@ -98,7 +98,7 @@ service CatalogService {
 
     } group by TargetActivities.distance;
 
-    view TotalByMonth as select from Activities {
+    @readonly view TotalByMonth as select from letsmove.Activities {
       key ID,
 
       extract (year from createdAt) as year: String,
@@ -150,7 +150,7 @@ service CatalogService {
       company
     };
 
-    view CompaniesView as select from Companies {
+    @readonly view CompaniesView as select from Companies {
       key code as CompanyCode,
       key country.code as CountryCode,
       key country.title as CountryTitle,
