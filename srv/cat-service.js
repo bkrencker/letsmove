@@ -17,4 +17,12 @@ module.exports = srv => {
     });
   });
 
+  srv.after('READ', 'RecentActivities', (each) => {
+    if (each.type && each.type.code) {
+      each.imageUrl = 'activities/webapp/icons/' + each.type.code + '.png';
+    } else if (each.type_code) {
+      each.imageUrl = 'activities/webapp/icons/' + each.type_code + '.png';
+    }
+  });
+
 };
