@@ -29,6 +29,7 @@ sap.ui.define([
         company_code: null
       });
 
+      this.byId("textTitle").setHtmlText("<h1>Let's Move " + new Date( ).getFullYear() +"!</h1>");
       this.getView().setModel(oViewModel, "viewModel");
       this.getModel("viewModel").setData({
         shapeAnimationValue: 0
@@ -36,6 +37,7 @@ sap.ui.define([
       //Activate form validation
       sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
       this.updateBulletChart();
+
 
       /**
        * Create Websocket Connection for realtime updates
