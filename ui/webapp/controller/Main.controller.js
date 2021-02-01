@@ -29,7 +29,7 @@ sap.ui.define([
         company_code: null
       });
 
-      this.byId("textTitle").setHtmlText("<h1>Let's Move " + new Date( ).getFullYear() +"!</h1>");
+      this.byId("textTitle").setHtmlText("<h1>Let's Move " + new Date( ).getFullYear() +"</h1>");
       this.getView().setModel(oViewModel, "viewModel");
       this.getModel("viewModel").setData({
         shapeAnimationValue: 0
