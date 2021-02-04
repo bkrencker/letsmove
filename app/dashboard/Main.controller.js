@@ -31,7 +31,9 @@ sap.ui.define([
        * Create Websocket Connection for realtime updates
        */
       //var oWS = new WebSocket("wss://businessappstudio-workspaces-ws-dk5pr-app1.eu10.applicationstudio.cloud.sap/wss");
-      var oWS = new WebSocket("/wss");
+      //var oWS = new WebSocket("/wss");
+      //var oWS = new WebSocket("wss://businessappstudio-workspaces-ws-dk5pr-app1.eu10.applicationstudio.cloud.sap");
+      var oWS = new WebSocket("/catalog/");
 
 			oWS.attachMessage(function (oEvent) {
 				// update list
