@@ -1,0 +1,112 @@
+{
+	"_version": "1.14.0",
+	"sap.app": {
+		"id": "card.explorer.stacked.column.card",
+		"type": "card",
+		"title": "Sample of a Stacked Column Chart",
+		"subTitle": "Sample of a Stacked Column Chart",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"shortTitle": "A short title for this Card",
+		"info": "Additional information about this Card",
+		"description": "A long description for this Card",
+		"tags": {
+			"keywords": [
+				"Analytical",
+				"Card",
+				"Stacked Column",
+				"Sample"
+			]
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://full-stacked-column-chart"
+		}
+	},
+	"sap.card": {
+		"type": "Analytical",
+		"header": {
+      "type": "Numeric",
+      "data": {
+        "request": {
+          "mode": "cors",
+          "method": "GET",
+          "url": "/catalog/TotalActivity"
+        },
+        "path": "/value/0"
+      },
+      "title": "Total Distance by Activity Type",
+			"mainIndicator": {
+				"number": "{totalKm}",
+				"unit": "km",
+				"trend": "Up",
+				"state": "Good"
+			}
+		},
+		"content": {
+			"chartType": "StackedColumn",
+			"legend": {
+				"visible": true,
+				"position": "Bottom",
+				"alignment": "TopLeft"
+			},
+			"plotArea": {
+				"dataLabel": {
+					"visible": false,
+					"showTotal": true
+				},
+				"categoryAxisText": {
+					"visible": false
+				},
+				"valueAxisText": {
+					"visible": false
+				}
+			},
+			"title": {
+				"text": "Stacked column chart",
+				"visible": false,
+				"alignment": "Left"
+			},
+			"measureAxis": "valueAxis",
+			"dimensionAxis": "categoryAxis",
+			"data": {
+        "request": {
+          "mode": "cors",
+          "method": "GET",
+          "url": "/catalog/TotalByMonthChart"
+      },
+      "path": "/value"
+			},
+			"dimensions": [
+				{
+					"label": "Month",
+					"value": "{month}"
+				}
+			],
+			"measures": [
+				{
+					"label": "Swim",
+					"value": "{totalKm_swim}"
+				}, {
+					"label": "Bike",
+					"value": "{totalKm_bike}"
+				}, {
+					"label": "Run",
+					"value": "{totalKm_run}"
+				}, {
+					"label": "Walk",
+					"value": "{totalKm_walk}"
+				}, {
+					"label": "Skate",
+					"value": "{totalKm_skate}"
+				}, {
+					"label": "Other",
+					"value": "{totalKm_other}"
+				}
+			]
+		}
+	}
+}

@@ -1,5 +1,14 @@
 const cds = require('@sap/cds');
-const WebSocket = require('ws');
+//const WebSocket = require('ws');
+
+/*const WebSocketServer = require('ws').Server;
+const wss = new WebSocketServer({
+    port: process.env.PORT || 8080
+});
+
+wss.on('connection', function connection(ws) {
+  console.log("WebSocket Connection");
+});*/
 
 const {
   Activities
@@ -10,11 +19,15 @@ module.exports = srv => {
   srv.after('INSERT', 'Activities', (req) => {
     console.log("After insert");
 
-    wss.clients.forEach(function each(client) {
+    for (const client of wss.clients) {
+      client.send("refresh");
+    }
+
+    /*wss.clients.forEach(function each(client) {
       if (client.readyState === WebSocket.OPEN) {
         client.send("refresh");
       }
-    });
+    });*/
   });
 
   srv.after('READ', 'RecentActivities', (each) => {
