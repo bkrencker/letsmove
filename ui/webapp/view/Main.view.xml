@@ -29,7 +29,7 @@
         <VBox id="vBoxConfirmation" alignItems="Center" justifyContent="Center" width="100%" visible="false">
           <items>
             <HBox id="hBoxConfirmationAvatar">
-            <si:StatusIndicator id="statusSucess" value="{viewModel>/shapeAnimationValue}" width="120px" height="120px">
+            <si:StatusIndicator id="statusSucess" value="{viewModel>/shapeAnimationValue}" width="80px" height="80px">
               <si:propertyThresholds>
                 <si:PropertyThreshold id="statusThresholdGood" fillColor="Good" toValue="100"/>
               </si:propertyThresholds>
@@ -39,7 +39,7 @@
             </si:StatusIndicator>
           </HBox>
           <HBox id="hBoxConfirmationText">
-            <Text id="textConfirmation" text="Thankyou for your participation!" />
+            <Text id="textConfirmation" text="Thank you / Danke / Merci / Grazie / Gracias / Obrigado / Dank" textAlign="Center" />
           </HBox>
           </items>
         </VBox>
@@ -49,7 +49,17 @@
 							<items>
 								<VBox id="vBoxDistance" width="100%" class="sapUiSmallMarginEnd">
 									<items>
-										<Input id="inputDistance" placeholder="Enter distance" validationError="validationError" validationSuccess="validationSucess" liveChange="checkIfFieldNotEmpty" type="Number" required="true" 	value="{ path: 'validation>/distance', type: 'sap.ui.model.type.Float', constraints: { minimum: 1, maximum: 999 } }" valueLiveUpdate="true"/>
+                    <Input id="inputDistance"
+                      placeholder="Enter distance"
+                      value="{
+                        path: 'validation>/distance',
+                        type:'sap.ui.model.type.Float',
+                        formatOptions: { minFractionDigits: 0, maxFractionDigits: 2 },
+                        constraints: { maximum: 999 }
+                      }"
+                      validationError="validationError"
+                      validationSuccess="validationSucess"
+                      change="checkIfFieldNotEmpty" />
 									</items>
 								</VBox>
 								<VBox id="vBoxUnitSelection" width="100%">
