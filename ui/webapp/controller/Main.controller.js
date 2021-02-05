@@ -106,12 +106,21 @@ sap.ui.define([
       return promise;
     },
     checkIfFieldNotEmpty: function (oEvent) {
-      if (oEvent.getSource().getValue() == "") {
+      //Replace , in distance field with .
+      if (oEvent.getParameters().id == this.byId("inputDistance").getId()) {
+        var value = oEvent.getSource().getValue();
+        value = value.replace(",", ".");
+        oEvent.getSource().setValue(value);
+      }
+
+      if (oEvent.getSource().getValue() == "" ) {
         oEvent.getSource().setValueState("Error");
         this.setButtonSendEnabled(false);
       }
     },
     companyValidation: function (oEvent) {
+      this.checkIfFieldNotEmpty(oEvent);
+
       if (oEvent.getSource().getSelectedKey() == "" || oEvent.getSource().getSelectedKey() == null || oEvent.getSource().getSelectedKey() == null) {
         oEvent.getSource().setValueState("Error");
         this.setButtonSendEnabled(false);
@@ -123,6 +132,7 @@ sap.ui.define([
 
     validationSucess: function (oEvent) {
       oEvent.getSource().setValueState("Success");
+
       if (this.allFieldsFilled() == true) {
         this.setButtonSendEnabled(true);
       } else {
