@@ -16,7 +16,6 @@ sap.ui.define([
 
       var oModel = new sap.ui.model.json.JSONModel();
       var oViewModel = new sap.ui.model.json.JSONModel();
-      var oStorage = jQuery.sap.storage(jQuery.sap.storage.Type.local); // Local Storage
 
       /*
         Initialize form Data for validation
@@ -36,10 +35,7 @@ sap.ui.define([
         shapeAnimationValue: 0
       });
 
-      //Load last inout values
-      this.byId("inputNickname").setValue(oStorage.get("nickname"));
-      this.byId("comboCompany").setSelectedKey(oStorage.get("company_code"));
-      this.byId("comboCompany").setValueState(sap.ui.core.ValueState.Success);
+      this.loadValuesFromLocalStorage();
 
       //Activate form validation
       sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
@@ -100,7 +96,8 @@ sap.ui.define([
         setTimeout(function () {
           vBoxConfirmation.setVisible(false);
           vBoxForm.setVisible(true);
-        }, 20000);
+          this.loadValuesFromLocalStorage();
+        }.bind(this), 20000);
       }.bind(this));
     },
 
@@ -212,6 +209,17 @@ sap.ui.define([
       var oModel = this.getModel("viewModel");
       for (var i = 0; i <= 100; i++) {
         oModel.setProperty("/shapeAnimationValue", i);
+      }
+    },
+    loadValuesFromLocalStorage: function() {
+      // Local Storage
+      var oStorage = jQuery.sap.storage(jQuery.sap.storage.Type.local);
+      //Load last inout values
+      this.byId("inputNickname").setValue(oStorage.get("nickname"));
+      this.byId("comboCompany").setSelectedKey(oStorage.get("company_code"));
+
+      if (oStorage.get("company_code") != null) {
+        this.byId("comboCompany").setValueState(sap.ui.core.ValueState.Success);
       }
     },
 
