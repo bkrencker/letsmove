@@ -16,6 +16,7 @@ sap.ui.define([
 
       var oModel = new sap.ui.model.json.JSONModel();
       var oViewModel = new sap.ui.model.json.JSONModel();
+      var oStorage = jQuery.sap.storage(jQuery.sap.storage.Type.local); // Local Storage
 
       /*
         Initialize form Data for validation
@@ -34,10 +35,15 @@ sap.ui.define([
       this.getModel("viewModel").setData({
         shapeAnimationValue: 0
       });
+
+      //Load last inout values
+      this.byId("inputNickname").setValue(oStorage.get("nickname"));
+      this.byId("comboCompany").setSelectedKey(oStorage.get("company_code"));
+      this.byId("comboCompany").setValueState(sap.ui.core.ValueState.Success);
+
       //Activate form validation
       sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
       this.updateBulletChart();
-
 
       /**
        * Create Websocket Connection for realtime updates
@@ -62,6 +68,11 @@ sap.ui.define([
 
     send: function () {
       var formData = this.getModel("validation").getData();
+      var oStorage = jQuery.sap.storage(jQuery.sap.storage.Type.local);
+      //Set data into local storage
+      oStorage.put("nickname", formData.nickname);
+      oStorage.put("company_code", formData.company_code);
+
       //Convert Float to string
       formData.distance = formData.distance.toString();
 
@@ -158,7 +169,7 @@ sap.ui.define([
       if (bool === true) {
         this.byId("btnSend").setType(sap.m.ButtonType.Accept);
       } else {
-        this.byId("btnSend").setType(sap.m.ButtonType.Reject);
+        this.byId("btnSend").setType(sap.m.ButtonType.Negative);
       }
     },
 
