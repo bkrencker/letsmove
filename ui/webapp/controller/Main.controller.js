@@ -40,18 +40,6 @@ sap.ui.define([
       //Activate form validation
       sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
       this.updateBulletChart();
-
-      /**
-       * Create Websocket Connection for realtime updates
-
-      //var oWS = new WebSocket("wss://businessappstudio-workspaces-ws-dk5pr-app1.eu10.applicationstudio.cloud.sap/wss");
-      var oWS = new WebSocket("/wss");
-
-			oWS.attachMessage(function (oEvent) {
-				// update list
-        this.updateBulletChart();
-      }.bind(this));
-       */
     },
 
     sleep: function (milliseconds) {
@@ -257,7 +245,7 @@ sap.ui.define([
               targetFormated = oFloatNumberFormat.format(targetFormated);
 
               this.getView().byId("microBulletChartThresholdStart").setValue(0);
-              this.getView().byId("microBulletChartThresholdEnd").setValue(target * 2);
+              this.getView().byId("microBulletChartThresholdEnd").setValue(target * 1.5);
               this.getView().byId("microBulletChart").setTargetValue(target);
               this.getView().byId("microBulletChart").setTargetValueLabel(targetFormated + " " + unit);
               this.getView().byId("microBulletChartActualData").setValue(total);

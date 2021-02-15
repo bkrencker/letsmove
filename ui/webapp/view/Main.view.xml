@@ -39,7 +39,7 @@
             </si:StatusIndicator>
           </HBox>
           <HBox id="hBoxConfirmationText">
-            <Text id="textConfirmation" text="Thank you / Danke / Merci / Grazie / Gracias / Obrigado / Dank" textAlign="Center" />
+            <Text id="textConfirmation" text="Thank you / Danke / Merci / Grazie / Gracias / Obrigado / Dank u" textAlign="Center" />
           </HBox>
           </items>
         </VBox>
