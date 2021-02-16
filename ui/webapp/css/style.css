@@ -6,7 +6,9 @@
  background-color: rgba(255, 255, 255, 0.0); /* 100% Transparent background */
 }
 
-.languButton {
-	height: 64px;
-	width: 64px;
+/* Position Medal over distance target of smart bullet */
+.imgMedal {
+  position: absolute;
+  left: 201px;
+  top: 200px;
 }

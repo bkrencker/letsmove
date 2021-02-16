@@ -15,6 +15,7 @@
         <FlexBox id="flexBoxText" alignItems="Center" justifyContent="Center">
           <FormattedText id="textTitle"/>
         </FlexBox>
+        <Image id="imgMedal" class="imgMedal" src="./resources/img/goldmedaille.png"></Image>
         <FlexBox id="flexBoxMicroBulletChart" alignItems="Center" justifyContent="Center">
         <smart:BulletMicroChart id="microBulletChart" class="sapUiSmallMargin" press="press" width="16rem">
           <smart:actual>
