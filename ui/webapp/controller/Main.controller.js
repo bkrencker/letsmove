@@ -244,6 +244,9 @@ sap.ui.define([
               var targetFormated = target;
               targetFormated = oFloatNumberFormat.format(targetFormated);
 
+              //Correct faulty decimal formating (212,121 km or 131.806 mi)
+              targetFormated = targetFormated.replace(".", ",");
+
               this.getView().byId("microBulletChartThresholdStart").setValue(0);
               this.getView().byId("microBulletChartThresholdEnd").setValue(target * 1.5);
               this.getView().byId("microBulletChart").setTargetValue(target);
