@@ -236,16 +236,15 @@ sap.ui.define([
                 target = Math.round(oContext.getObject().TargetActivitiesKm);
               }
               //Set SmartBullet Values
-
+              if (navigator.language == "de-de") {
+                sap.ui.getCore().getConfiguration().setLanguage("de-CH");
+              }
               //Add thousand separator according to locale
               var oFloatNumberFormat = NumberFormat.getFloatInstance({
                     groupingEnabled: true
                 } , sap.ui.getCore().getConfiguration().getLocale());
               var targetFormated = target;
-              targetFormated = oFloatNumberFormat.format(targetFormated);
-
-              //Correct faulty decimal formating (212,121 km or 131.806 mi)
-              targetFormated = targetFormated.replace(".", ",");
+              targetFormated = oFloatNumberFormat.format(parseInt(target));
 
               this.getView().byId("microBulletChartThresholdStart").setValue(0);
               this.getView().byId("microBulletChartThresholdEnd").setValue(target * 1.5);
