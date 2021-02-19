@@ -235,7 +235,7 @@ sap.ui.define([
                 total = Math.round(oContext.getObject().totalKm);
                 target = Math.round(oContext.getObject().TargetActivitiesKm);
               }
-              //Set SmartBullet Values
+              //Workaround, set de-de locale to de-CH to format correctly
               if (navigator.language == "de-de") {
                 sap.ui.getCore().getConfiguration().setLanguage("de-CH");
               }
