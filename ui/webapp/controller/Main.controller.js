@@ -102,10 +102,8 @@ sap.ui.define([
       return promise;
     },
     checkIfFieldNotEmpty: function (oEvent) {
-      //Replace , in distance field with .
       if (oEvent.getParameters().id == this.byId("inputDistance").getId()) {
         var value = oEvent.getSource().getValue();
-        value = value.replace(",", ".");
         oEvent.getSource().setValue(value);
       }
 
@@ -127,6 +125,7 @@ sap.ui.define([
     },
 
     validationSucess: function (oEvent) {
+      debugger;
       oEvent.getSource().setValueState("Success");
 
       if (this.allFieldsFilled() == true) {
