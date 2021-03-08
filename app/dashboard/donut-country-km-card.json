@@ -68,10 +68,7 @@
         "request": {
           "mode": "cors",
           "method": "GET",
-          "url": "/catalog/TotalByCountry",
-          "parameters": {
-            "$top": "6"
-          }
+          "url": "/catalog/TotalByCountry"
       },
       "path": "/value"
     },
