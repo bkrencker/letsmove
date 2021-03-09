@@ -45,11 +45,13 @@
             </w:layoutData>
           </w:Card>
 
+<!--
           <w:Card id="idDonutCompanyCard">
             <w:layoutData>
               <f:GridContainerItemLayoutData columns="6" />
             </w:layoutData>
           </w:Card>
+-->
 
           <w:Card id="idDonutCountryCard">
             <w:layoutData>

@@ -36,7 +36,7 @@
         },
         "path": "/value/0"
       },
-      "title": "Total Distance by Company",
+      "title": "Top 6 Companies: Total Distance",
 			"mainIndicator": {
 				"number": "{totalKm}",
 				"unit": "km",
@@ -68,14 +68,17 @@
         "request": {
           "mode": "cors",
           "method": "GET",
-          "url": "/catalog/TotalByCompany"
+          "url": "/catalog/TotalByCompany",
+          "parameters": {
+            "$top": "6"
+          }
       },
       "path": "/value"
     },
 			"dimensions": [
 				{
 					"label": "Company",
-					"value": "{code}"
+					"value": "{title}"
 				}
 			],
 			"measures": [
