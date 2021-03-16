@@ -1,6 +1,6 @@
 using letsmove as letsmove from '../db/data-model';
 
-service AdminService {
+service AdminService @(requires: 'authenticated-user') {
 
     entity Activities as projection on letsmove.Activities;
 
