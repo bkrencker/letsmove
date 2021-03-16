@@ -1,10 +1,10 @@
 using letsmove as letsmove from '../db/data-model';
 
-annotate CatalogService.Activities {
+/*annotate CatalogService.Activities {
       nickname @Analytics.Dimension: true;
       distance @Analytics.Measure: true;
     };
-
+*/
 
 service CatalogService {
     @insertonly entity Activities as projection on letsmove.Activities;
