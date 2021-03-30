@@ -16,19 +16,28 @@ const {
 
 module.exports = srv => {
   /*
+    Prevent insert after 01.04.2021 12:00 (End of campain)
+  */
   srv.on('INSERT', 'Activities', async (req) => {
-    const result = await cds.run(req.query);
-    var row = result['req'].query.INSERT['entries'][0];
-
-    var endTime = new Date('2021','03','01','12','00','00').getTime();
+    var endTime = new Date('2021','03','01','10','00','00').getTime();
     var now = new Date().getTime();
 
+    //Get request data
+    var resquest = req.query.INSERT.entries[0];
+    var row = null;
+
     if (endTime <= now) {
-      row = { };
+      //Campain ended, don't execute INSERT
+      row = resquest;
+      return row;
+    } else {
+      //Execute INSERT Query
+      const result = await cds.run(req.query);
+      row = result['req'].query.INSERT['entries'][0];
+      return row;
     }
-    return row;
   });
-*/
+
   srv.after('INSERT', 'Activities', (req) => {
     console.log("After insert");
 
