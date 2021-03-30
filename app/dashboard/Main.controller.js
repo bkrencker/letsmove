@@ -22,7 +22,7 @@ sap.ui.define([
 
       this.getView().byId("idTimelineCard").setManifest(sPath + "/timeline-card.json");
       this.getView().byId("idDonutActivityCard").setManifest(sPath + "/donut-activitytype-km-card.json");
-      this.getView().byId("idDonutCompanyCard").setManifest(sPath + "/donut-company-km-card.json");
+      //this.getView().byId("idDonutCompanyCard").setManifest(sPath + "/donut-company-km-card.json");
       this.getView().byId("idDonutCountryCard").setManifest(sPath + "/donut-country-km-card.json");
       this.getView().byId("idQRCodeCard").setManifest(sPath + "/qrcode/manifest.json");
       this.getView().byId("idChartColumnMonthTypeCard").setManifest(sPath + "/chart-column-month-type-card.json");
@@ -39,7 +39,7 @@ sap.ui.define([
 				// update list
         this.getView().byId("idTimelineCard").refresh();
         this.getView().byId("idDonutActivityCard").refresh();
-        this.getView().byId("idDonutCompanyCard").refresh();
+        //this.getView().byId("idDonutCompanyCard").refresh();
         this.getView().byId("idDonutCountryCard").refresh();
         this.getView().byId("idChartColumnMonthTypeCard").refresh();
       }.bind(this));
@@ -106,7 +106,7 @@ sap.ui.define([
 
       this.getView().byId("idTimelineCard").refresh();
       this.getView().byId("idDonutActivityCard").refresh();
-      this.getView().byId("idDonutCompanyCard").refresh();
+      //this.getView().byId("idDonutCompanyCard").refresh();
       this.getView().byId("idDonutCountryCard").refresh();
     }
 

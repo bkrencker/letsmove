@@ -76,14 +76,14 @@
         "request": {
           "mode": "cors",
           "method": "GET",
-          "url": "/catalog/TotalByMonthChart"
+          "url": "/catalog/TotalByWeekChart"
       },
       "path": "/value"
 			},
 			"dimensions": [
 				{
-					"label": "Month",
-					"value": "{month}"
+					"label": "Week",
+					"value": "{week}"
 				}
 			],
 			"measures": [

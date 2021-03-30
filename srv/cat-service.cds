@@ -1,10 +1,10 @@
 using letsmove as letsmove from '../db/data-model';
 
-annotate CatalogService.Activities {
+/*annotate CatalogService.Activities {
       nickname @Analytics.Dimension: true;
       distance @Analytics.Measure: true;
     };
-
+*/
 
 service CatalogService {
     @insertonly entity Activities as projection on letsmove.Activities;
@@ -100,18 +100,19 @@ service CatalogService {
     where type.code is not null
     group by TargetActivities.distance;
 
-    @readonly view TotalByMonthChart as select from TotalByMonth as _outer {
-      substring(_outer.monthString, 0, 3) as month: String,
-      coalesce(round(( select totalKm from TotalByMonth where type.code = 'swim' and monthString = _outer.monthString )), 0) as totalKm_swim: Integer,
-      coalesce(round(( select totalKm from TotalByMonth where type.code = 'bike' and monthString = _outer.monthString )), 0) as totalKm_bike: Integer,
-      coalesce(round(( select totalKm from TotalByMonth where type.code = 'run' and monthString = _outer.monthString )), 0) as totalKm_run: Integer,
-      coalesce(round(( select totalKm from TotalByMonth where type.code = 'walk' and monthString = _outer.monthString )), 0) as totalKm_walk: Integer,
-      coalesce(round(( select totalKm from TotalByMonth where type.code = 'skate' and monthString = _outer.monthString )), 0) as totalKm_skate: Integer,
-      coalesce(round(( select totalKm from TotalByMonth where type.code = 'other' and monthString = _outer.monthString )), 0) as totalKm_other: Integer
-    } group by _outer.monthString;
+    @readonly view TotalByWeekChart as select from TotalByWeek as _outer {
+      substring(_outer.weekString, 0, 3) as week: String,
+      coalesce(round(( select totalKm from TotalByWeek where type.code = 'swim' and weekString = _outer.weekString )), 0) as totalKm_swim: Integer,
+      coalesce(round(( select totalKm from TotalByWeek where type.code = 'bike' and weekString = _outer.weekString )), 0) as totalKm_bike: Integer,
+      coalesce(round(( select totalKm from TotalByWeek where type.code = 'run' and weekString = _outer.weekString )), 0) as totalKm_run: Integer,
+      coalesce(round(( select totalKm from TotalByWeek where type.code = 'walk' and weekString = _outer.weekString )), 0) as totalKm_walk: Integer,
+      coalesce(round(( select totalKm from TotalByWeek where type.code = 'skate' and weekString = _outer.weekString )), 0) as totalKm_skate: Integer,
+      coalesce(round(( select totalKm from TotalByWeek where type.code = 'other' and weekString = _outer.weekString )), 0) as totalKm_other: Integer
+    } group by _outer.weekString
+    order by week;
 
-    @readonly view TotalByMonth as select from TotalByMonthRaw {
-      monthString,
+    @readonly view TotalByWeek as select from TotalByMonthRaw {
+      weekString,
       type,
       round( sum(
         case
@@ -127,12 +128,14 @@ service CatalogService {
             distance
         end
       ), 2) as totalMi: Decimal(10,2)
-    } group by monthString, type;
+    } group by weekString, type;
 
     @readonly view TotalByMonthRaw as select from letsmove.Activities {
       extract (year from createdAt) as year: String,
       extract (month from createdAt) as month: String,
       extract (year from createdAt) || '-' || lpad( extract (month from createdAt), 2, 0 ) as formattedDate: String,
+
+      substring(isoweek(createdAt), 6, 3) as weekString: String,
 
       case extract (month from createdAt)
         when 1 then 'January'
