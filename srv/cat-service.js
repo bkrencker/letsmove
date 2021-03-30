@@ -15,7 +15,20 @@ const {
 } = cds.entities;
 
 module.exports = srv => {
+  /*
+  srv.on('INSERT', 'Activities', async (req) => {
+    const result = await cds.run(req.query);
+    var row = result['req'].query.INSERT['entries'][0];
 
+    var endTime = new Date('2021','03','01','12','00','00').getTime();
+    var now = new Date().getTime();
+
+    if (endTime <= now) {
+      row = { };
+    }
+    return row;
+  });
+*/
   srv.after('INSERT', 'Activities', (req) => {
     console.log("After insert");
 

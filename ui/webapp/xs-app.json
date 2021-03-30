@@ -22,6 +22,7 @@
       "source": "^(.*)",
       "target": "$1",
       "authenticationType": "none",
+      "cacheControl": "no-cache, no-store, must-revalidate",
       "service": "html5-apps-repo-rt"
     }
   ]
