@@ -40,6 +40,16 @@ sap.ui.define([
       //Activate form validation
       sap.ui.getCore().getMessageManager().registerObject(this.getView(), true);
       this.updateBulletChart();
+
+      //Deactivate Form after 01.04.2021
+      var endTime = new Date('2021','03','01','12','00','00').getTime();
+      var now = new Date().getTime();
+
+      if (endTime <= now) {
+        this.byId("vBoxForm").setVisible(false);
+        this.byId("textCampainEnded").setHtmlText("<h3>Kampagne beendet.</h3><br />Vielen Dank für eure Teilnahme!<br /><br /><h3>Campaign ended.</h3><br />Vielen Dank für eure Teilnahme!");
+        this.byId("vBoxCampainEnded").setVisible(true);
+      }
     },
 
     sleep: function (milliseconds) {

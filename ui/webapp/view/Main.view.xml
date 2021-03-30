@@ -44,6 +44,9 @@
           </HBox>
           </items>
         </VBox>
+        <VBox id="vBoxCampainEnded" alignItems="Center" justifyContent="Center" visible="false">
+          <FormattedText id="textCampainEnded" />
+        </VBox>
 				<VBox id="vBoxForm">
 					<items>
 						<HBox id="hBoxDistnace">
