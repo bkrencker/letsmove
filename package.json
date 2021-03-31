@@ -5,31 +5,34 @@
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "private": true,
+  "engines": {
+    "node": "^12"
+  },
   "dependencies": {
-    "@sap/cds": "^4",
-    "@sap/hana-client": "^2.4.177",
-    "@sap/hdi-deploy": "^3.11.15",
+    "@sap/cds": "^4.6.5",
     "express": "^4",
     "express-ws": "^4.0.0",
-    "helmet": "^4.3.1",
-    "ws": "^7.4.2"
+    "helmet": "^4.4.1",
+    "ws": "^7.4.4"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.84.0",
-    "@ui5/cli": "^2.9.1",
+    "@sap/hana-client": "^2.7.26",
+    "@sap/hdi-deploy": "^4.0.4",
+    "@sap/ux-specification": "^1.84.6",
+    "@ui5/cli": "^2.10.2",
     "cross-var": "^1.1.0",
-    "eslint": "^7.15.0",
+    "eslint": "^7.23.0",
     "karma": "^5.2.3",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage": "^2.0.3",
-    "karma-ui5": "^2.3.2",
-    "mbt": "^1.0.17",
+    "karma-ui5": "^2.3.3",
+    "mbt": "^1.1.1",
     "npm-run-all": "^4.1.5",
     "shx": "^0.3.3",
     "sqlite3": "^4.1.0",
-    "ui5-middleware-cfdestination": "^0.3.0",
-    "ui5-middleware-livereload": "^0.5.1",
-    "ui5-task-zipper": "^0.4.0"
+    "ui5-middleware-cfdestination": "^0.3.1",
+    "ui5-middleware-livereload": "^0.5.3",
+    "ui5-task-zipper": "^0.4.2"
   },
   "scripts": {
     "start": "npx cds run",
