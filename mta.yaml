@@ -20,6 +20,7 @@ modules:
       disk-quote: 1024M
     requires:
       - name: letsmove-db
+      - name: ui5_uaa
     provides:
       - name: srv_api
         properties:

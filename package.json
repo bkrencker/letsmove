@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@sap/cds": "^4.6.5",
+    "@sap/hana-client": "^2.7.26",
+    "@sap/xsenv": "^2.2.0",
+    "@sap/xssec": "^2.2.5",
     "express": "^4",
     "express-ws": "^4.0.0",
     "helmet": "^4.4.1",
+    "passport": "^0.4.1",
     "ws": "^7.4.4"
   },
   "devDependencies": {
